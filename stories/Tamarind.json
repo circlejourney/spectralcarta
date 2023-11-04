@@ -1,0 +1,30 @@
+{
+    "name": "Tamarind",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/fruit1.png",
+    "coords": [-27.476533, 153.030344],
+    "associated": "Botanist",
+    
+    "popups": [
+        {
+            "required": [
+                "Botanist:acceptedQuest"
+            ],
+            "dialogue": [
+                "A small brown fruit. Perhaps this is a fig?"
+            ],
+            "journal": "I found a brown fruit on the grown. Perhaps this is a fig?",
+            "pickUpOnComplete": [
+                "Tamarind"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A small brown fruit lying on the grass."
+            ]
+        }
+    ]
+}

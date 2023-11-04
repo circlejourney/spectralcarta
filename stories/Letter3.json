@@ -1,0 +1,32 @@
+{
+    "name": "Letter 2",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/letter.png",
+    "coords": [-27.471398694247892, 153.01792763534803],
+    
+    "popups": [
+        {
+            "required": [
+                "Postman:acceptedQuest"
+            ],
+            "requiredItemState": [
+                "!Letter"
+            ],
+            "dialogue": [
+                "A letter addressed to L. Diaz. I borrow it from the collection."
+            ],
+            "journal": "I picked up a sealed letter at the State Library of Queensland.",
+            "pickUpOnComplete": [
+                "Letter"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A letter sealed with string. It is addressed to L. Diaz."
+            ]
+        }
+    ]
+}

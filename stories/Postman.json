@@ -1,0 +1,310 @@
+{
+    "name":"Postman",
+    "type": "character",
+    "sprites": {
+        "idle": "characters/postman.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/GPO.jpg"
+    },
+    
+    "time": [0, 24],
+    
+    "coords": [-27.468124, 153.028172],
+    "dialogueLabel": "Postman",
+        
+    "conversations": [
+        {
+            "required": [ "!met" ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "text": "Where is it? Where is it? Where is it?",
+                    "oncomplete": [ "met" ]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!theLetter", "!unfinishedBusiness"],
+            "optionLabel": "What are you looking for?",
+            "dialogue": [
+                {
+                    "text": "The letter!",
+                    "oncomplete": ["theLetter"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!wouldYou", "!unfinishedBusiness"],
+            "optionLabel": "Do you need help?",
+            "dialogue": [
+                {
+                    "text": "Do I need help? Do I <i>need help</i>? You tell me!"
+                },
+                {
+                    "text": "He pauses.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Wait a minute now, you see me?",
+                    "override": "youSeeMe"
+                }
+            ]
+        },
+        {
+            "override": "youSeeMe",
+            "optionLabel": "Yes, it’s my job to see ghosts and speak with them.",
+            "dialogue": [
+                {
+                    "text": "You’re the first in decades&mdash;"
+                },
+                {
+                    "text": "Oh, dear me, you <i>must</u> help me!"
+                },
+                {
+                    "text": "I have begun to understand my predicament."
+                },
+                {
+                    "text": "I am trapped here on this plane, because I must have some unfinished business.",
+                    "oncomplete": [ "unfinishedBusiness" ],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["unfinishedBusiness", "!theLetter", "!wouldYou"],
+            "optionLabel": "What is your unfinished business?",
+            "dialogue": [
+                {
+                    "text": "I don’t remember much, but I do remember I lost a letter."
+                },
+                {
+                    "text": "And you see, it must have been an important letter, for when it was found missing, the intended recipients filed a case against the Postmaster-General’s Department."
+                },
+                {
+                    "text": "The entire department, can you imagine?"
+                },
+                {
+                    "text": "When it was learned that I was the one who lost it, I was dismissed from my position with great prejudice."
+                },
+                {
+                    "text": "Which serves me right, of course..."
+                },
+                {
+                    "text": "And I died three years later, all fine and dandy, at the ripe old age of thirty-one."
+                },
+                {
+                    "text": "But so grave was my error that, even in death, I am doomed to forever hunt for the letter I will never find."
+                },
+                {
+                    "text": "I cannot leave the confines of this building."
+                },
+                {
+                    "text": "But you, you can!"
+                },
+                {
+                    "text": "Would you be so kind?",
+                    "oncomplete": ["wouldYou"]
+                }
+            ]
+        },
+        {
+            "required": ["unfinishedBusiness", "theLetter", "!wouldYou"],
+            "optionLabel": "Is your unfinished business related to the letter?",
+            "dialogue": [
+                {
+                    "text": "Yes, yes, I was getting to that..."
+                },
+                {
+                    "text": "You see, it was a document officiating a divorce, and when it was found missing, the intended recipient's family filed a case against the Postmaster-General’s Department."
+                },
+                {
+                    "text": "The entire department, can you imagine?"
+                },
+                {
+                    "text": "When it was learned that I was the one who lost it, I was dismissed from my position with great prejudice."
+                },
+                {
+                    "text": "Which serves me right, of course..."
+                },
+                {
+                    "text": "Well, I died three years later, at the ripe old age of thirty-one."
+                },
+                {
+                    "text": "But so grave was my error that, even in death, it seems I am doomed to forever hunt for the letter I will never find."
+                },
+                {
+                    "text": "I cannot leave the confines of this building."
+                },
+                {
+                    "text": "But you, you can!"
+                },
+                {
+                    "text": "Would you be so kind?",
+                    "oncomplete": ["wouldYou"]
+                }
+            ]
+        },
+        {
+            "required": ["wouldYou", "!acceptedQuest"],
+            "optionLabel": "I will find you your letter.",
+            "dialogue": [
+                {
+                    "text": "Thank you, thank you!",
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest"],
+            "requiredItemState": ["!Letter"],
+            "optionLabel": "Where might the letter be?",
+            "dialogue": [
+                {
+                    "text": "Oh, I don't know, from that long ago, surely by now it must either be in the Public Library's collection...or lost.",
+                    "journal": "The postman's ghost suggests that the missing letter might be in the <a target='_black' href='https://en.wikipedia.org/wiki/State_Library_of_Queensland#History'>Public Library's</a> collection. Let us hope it is not lost forever, for the poor ghost's sake."
+                }
+            ]
+        },
+        {
+            "required": ["met", "!plague", "!guessedYear"],
+            "optionLabel": "When did you die?",
+            "dialogue": [
+                {
+                    "text": "Goodness, can I remember?"
+                },
+                {
+                    "text": "I do not know when I died."
+                },
+                {
+                    "text": "But in my decades drifting dead, I have been able to dredge up some memories. The memories of my last days here."
+                },
+                {
+                    "text": "The war...the war had ended. But a plague followed on its heels...we were living in terror.",
+                    "override": "plague",
+                    "sendLetterOnComplete": {
+                        "name": "Hua 'Aukai",
+                        "sender": "Hua 'Aukai",
+                        "subject": "I think the tower mill is haunted...",
+                        "body": "<p>Today, I was climbing the hill by Wickham Terrace. I turned to look at the green around the Tower Mill, as I often do.</p><p>This time, I saw the flash of something in the window: a face.</p><p>Heart leaping to my throat, I rubbed my eyes and looked again. He was still there. I soon perceived that he was swinging from a rope around his neck.</p><p>I screamed and ran away, and began writing this letter posthaste. Surely if anyone has an answer, it must be you, the Guilde of Mediums!</p>"
+                    }
+                }
+            ]
+        },
+        {
+            "override": "plague",
+            "optionLabel": "It sounds like no more than a few years ago.",
+            "dialogue": [
+                {
+                    "text": "That it may be, but I'm certain I have been dead for ten years at the very least",
+                    "oncomplete": ["guessedYear"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "plague",
+            "optionLabel": "That sounds like it was a long time ago, {YearDifference1920approx} years ago.",
+            "dialogue": [
+                {
+                    "text": "{YearDifference1920approx}!?"
+                },
+                {
+                    "text": "Dear God, has it been so long?",
+                    "oncomplete": ["guessedYear"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "plague",
+            "optionLabel": "That sounds like {YearDifference1945approx} years ago.",
+            "dialogue": [
+                {
+                    "text": "That it could well be. {YearDifference1945approx} years...",
+                    "oncomplete": ["guessedYear"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "requiredItemState": ["Letter"],
+            "required": ["!allThoseYears"],
+            "optionLabel": "I believe this is the letter you sought.",
+            "dialogue": [
+                {
+                    "text": "Ah...yes, yes, this is it."
+                },
+                {
+                    "text": "It has the year marked...1921. Seeing it brings me no joy."
+                },
+                {
+                    "text": "All those years ago, I could have saved a woman's life."
+                },
+                {
+                    "text": "I don't know if this guilt could ever fade."
+                },
+                {
+                    "text": "Ah, if you are a spirit medium, then you must be able to speak to her."
+                },
+                {
+                    "text": "Would you let her know I'm truly sorry?",
+                    "oncomplete": ["allThoseYears"]
+                }
+            ]
+        },
+        {
+            "required": ["Bartender's Wife:sadCircumstance", "allThoseYears", "!holdAGrudge"],
+            "optionLabel": "I have spoken to the woman who was supposed to receive the letter. She doesn't begrudge you for it.",
+            "dialogue": [
+                {
+                    "text": "Doesn't she?"
+                },
+                {
+                    "text": "She must know how it is to be aimless for decades."
+                },
+                {
+                    "text": "It's hard to hold a grudge like this.",
+                    "oncomplete": ["holdAGrudge"]
+                }
+            ]
+        },
+        {
+            "required": ["Bartender's Wife:goodbye", "!goodbye"],
+            "optionLabel": "I brought the lady the letter. Reading it, it brought her some peace.",
+            "dialogue": [
+                {
+                    "text": "Really? Truly? For that I am&mdash;I think I am relieved."
+                },
+                {
+                    "text": "It hardly undoes my crime, but it does, it does awaken some hope in me."
+                },
+                {
+                    "text": "That there is good waiting after death, after all...",
+                    "override": "goodwaiting"
+                }
+            ]
+        },
+        {
+            "override": "goodwaiting",
+            "dialogue": [
+                {
+                    "text": "I have watched this city change around me, watched the comers and goers of this corridor change with it, though I never did change."
+                },
+                {
+                    "text": "A blessing and a curse in one. What sweet sorrow that I must leave it now..."
+                },
+                {
+                    "text": "But you are right, it is time for me to bid this little post office farewell."
+                },
+                {
+                    "text": "That door is open to me now, goodbye...",
+                    "oncomplete": ["goodbye"],
+                    "clearOverride": true,
+                    "releaseOnComplete": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Rosary",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/rosary.png",
+    "coords": [-27.461653, 153.034697],
+    
+    "popups": [
+        {
+            "required": ["Builder:acceptedQuestTwo"],
+            "pickUpOnComplete": ["Rosary"],
+            "dialogue": [
+                "A carved rosary of bone-white beads, hanging upon a bough."
+            ],
+            "journal": "I found the bridge builder's rosary on a tree, where he said it would be."
+        },
+        {
+            "dialogue": [
+                "A rosary of bone-white beads, lovingly carved."
+            ]
+        }
+    ]
+}

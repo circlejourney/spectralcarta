@@ -1,0 +1,263 @@
+{
+    "name": "Bartender's Wife",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.474321, 153.017431],
+    "dialogueLabel": "Bartender's Wife",
+    
+    "sprites": {
+        "idle": "characters/wife.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Plough-Inn.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "noLabel": true,
+                    "text": "A strange apparition darts by your vision, wailing inconsolately like a wind through a glade.",
+                    "override": "crying"
+                }
+            ]
+        },
+        {
+            "override": "crying",
+            "optionLabel": "Excuse me. What is the matter?",
+            "dialogue": [
+                {
+                    "noLabel": true,
+                    "text": "She is incoherent with weeping.",
+                    "oncomplete": [
+                        "met"
+                    ],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["met", "!angered", "!letter"],
+            "optionLabel": "Please stop crying.",
+            "dialogue": [
+                {
+                    "text": "Go away!"
+                }
+            ],
+            "oncomplete": [ "angered" ]
+        },
+        
+        {
+            "required": ["met", "!storyTold"],
+            "optionLabel": "Is there something I can do to help you?",
+            "dialogue": [
+                {
+                    "text": "No. Nothing, nothing you do can change this woeful world. Leave."
+                }
+            ]
+        },
+        
+        {
+            "required": ["storyTold", "!needLetter"],
+            "optionLabel": "Is there something I can do to help you?",
+            "dialogue": [
+                {
+                    "text": "It was the letter, wasn’t it? Somehow, my corpse still wants to see it."
+                },
+                {
+                    "text": "It’s less than useless now, but somehow, I need to see it, to be sure, to know I’m free.",
+                    "oncomplete": [ "needLetter" ]
+                }
+            ]
+        },
+        
+        {
+            "required": ["met", "!letter"],
+            "optionLabel": "What’s wrong?",
+            "dialogue": [
+                {
+                    "text": "It never arrived."
+                },
+                {
+                    "text": "It was  to come in the mail, the letter, oh, the letter.",
+                    "oncomplete": [ "letter" ]
+                }
+            ]
+        },
+        {
+            "required": ["letter", "!theMan"],
+            "optionLabel": "What letter?",
+            "dialogue": [
+                {
+                    "text": "I was to leave him."
+                },
+                {
+                    "text": "A woman could only have dreamt to do what I was to do, at the turn of the century!"
+                },
+                {
+                    "text": "I was a day away from freedom. But the letter never came."
+                },
+                {
+                    "text": "The promise of freedom snatched away in the last hour. He would not abide it, would not abide my freedom."
+                },
+                {
+                    "text": "O, it is too late to wish, is it not? Now I am trapped here, in a place that reeks of that man, of everything I hated!",
+                    "oncomplete": [
+                        "theMan"
+                    ]
+                }
+            ]
+        },
+        {
+            "required": ["theMan", "!storyTold"],
+            "optionLabel": "What did he do?",
+            "altLabel": [
+                {
+                    "required": ["husband"],
+                    "label": "What did you husband do?"
+                }
+            ],
+            "dialogue": [
+                {
+                    "text": "It was here, right on the porch... He was in a stupor, he always was by nine on the clock."
+                },
+                {
+                    "text": "And he hated me, I saw it in his eyes."
+                },
+                {
+                    "text": "He came home from the war, but the war never left him."
+                },
+                {
+                    "text": "He looked at me like an enemy, he wanted me dead."
+                },
+                {
+                    "text": "And then he did it."
+                },
+                {
+                    "text": "He smashed a bottle over my head. My blood flooded my eyes, turning the world red."
+                },
+                {
+                    "text": "I was just a week from freedom. My parents had a room ready. I could finally escape."
+                },
+                {
+                    "text": "But the letter never came.",
+                    "oncomplete": [
+                        "storyTold"
+                    ],
+                    "journal": [
+                        {
+                            "required": ["husband"],
+                            "text": "The poor bartender's wife was a week from fleeing him when she was murdered."
+                        },
+                        {
+                            "text": "The poor lady was murdered with a glass bottle to the head."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "required": ["theMan", "!husband"],
+            "optionLabel": "Who was this man?",
+            "dialogue": [
+                {
+                    "text": "My husband, my bane, my death&mdash;",
+                    "oncomplete": [
+                        "husband"
+                    ]
+                },
+                {
+                    "noLabel": true,
+                    "text": "Her face contorts with tearless sobbing, and she refuses to say more.",
+                    "journal": [
+                        {
+                            "required": ["storyTold"],
+                            "text": "The man who murdered the Plough Inn ghost was her husband."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "required": ["needLetter", "!acceptedQuest"],
+            "optionLabel": "I’ll find it and bring it to you.",
+            "dialogue": [
+                {
+                    "text": "It's all that can be done, no?",
+                    "oncomplete": [
+                        "acceptedQuest"
+                    ]
+                }
+            ]
+        },
+        {
+            "required": ["Postman:wouldYou", "storyTold", "!sadCircumstance"],
+            "optionLabel": "I have met the man who lost your letter. He seems overcome with guilt at his deed.",
+            "dialogue": [
+                {
+                    "text": "I have long wondered of its fate..."
+                },
+                {
+                    "text": "But he should not be so overcome, I don't have it in my heart to begrudge him for it."
+                },
+                {
+                    "text": "Though by all accounts I should."
+                },
+                {
+                    "text": "I am disappointed, perhaps. Furious. But I want no revenge, not on him."
+                },
+                {
+                    "text": "It is a sad circumstance, but I know...I know his mistake wasn't made in malice.",
+                    "oncomplete": ["sadCircumstance"]
+                }
+            ]
+        },
+        {
+            "requiredItemState": ["Letter"],
+            "optionLabel": "I have found the letter, at least I think this is the one, addressed to a Dorthea Nielsen.",
+            "dialogue": [
+                {
+                    "text": "Yes...this is the one."
+                },
+                {
+                    "text": "Ah, yes."
+                },
+                {
+                    "text": "My heart is still now."
+                },
+                {
+                    "text": "They saw my appeal and they heard it."
+                },
+                {
+                    "text": "His name forever bound to the crimes he committed."
+                },
+                {
+                    "text": "It's like a chain lifted, I can move again..."
+                },
+                {
+                    "text": "She appears to be fading.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Goodbye...",
+                    "oncomplete": ["goodbye"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "!sharedName"],
+            "optionLabel": "What is your name?",
+            "dialogue": [
+                {
+                    "text": "Dorthea...Nielsen...",
+                    "oncomplete": ["sharedName"]
+                }
+            ]
+        }
+    ]
+}

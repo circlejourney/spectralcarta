@@ -1,0 +1,266 @@
+{
+    "name": "Cargo Loader",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.466706, 153.022220],
+    "dialogueLabel": "Cargo Loader",
+    
+    "sprites": {
+        "idle": "characters/cargo-loader.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Roma-Street-Station.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "text": "Quit your goggling. I’m a ghost. Move along, move along."
+                },
+                {
+                    "text": "He begins to drift away, before turning around again.",
+                    "noLabel": true
+                },
+                {
+                    "text": "How is it you see me?",
+                    "oncomplete": ["met"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!youCanSeeMe"],
+            "optionLabel": "Seeing ghosts is my job; I have been given a device to see you by.",
+            "dialogue": [
+                {
+                    "text": "A spirit medium?"
+                },
+                {
+                    "text": "Mediumship is a load of tripe."
+                },
+                {
+                    "text": "That’s what I thought, before I died, and became <i>this</i>."
+                },
+                {
+                    "text": "But if you can see me, well then...",
+                    "oncomplete": ["youCanSeeMe"]
+                }
+            ]
+        },
+        {
+            "required": ["youCanSeeMe", "!timber"],
+            "optionLabel": "Why are you carrying so much wood?",
+            "dialogue": [
+                {
+                    "text": "Timber...timber, it was the shipment for the bridge."
+                },
+                {
+                    "text": "One shipment, three thousand planks. Ordered by Evan Deakins Construction.",
+                    "oncomplete": ["timber"]
+                }
+            ]
+        },
+        {
+            "required": ["youCanSeeMe", "!ache"],
+            "optionLabel": "Do you remember how you died?",
+            "dialogue": [
+                {
+                    "text": "Just a flash of metal and light. There was...there was..."
+                },
+                {
+                    "text": "An explosion."
+                },
+                {
+                    "text": "He clutches his forehead where the ghostly stain of blood lingers.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Ech, why does it ache?",
+                    "oncomplete": ["ache"]
+                }
+            ]
+        },
+        {
+            "required": ["ache", "!killsUs"],
+            "optionLabel": "What were you doing when you died?",
+            "dialogue": [
+                {
+                    "text": "It was my work, loading cargo onto trains, right here."
+                },
+                {
+                    "text": "I was minding my own business as I should."
+                },
+                {
+                    "text": "The freight had come in, timber for the Story Bridge."
+                },
+                {
+                    "text": "We all heard it as we heaved the planks, some great and awful groaning, something we weren’t supposed to talk about."
+                },
+                {
+                    "text": "No, we keep our heads down, us workmen.",
+                    "oncomplete": ["killsUs"]
+                }
+            ]
+        },
+        {
+            "required": ["youCanSeeMe", "!mentionedFamily"],
+            "optionLabel": "I'm here to help you. Do you have any lingering regrets?",
+            "dialogue": [
+                {
+                    "text": "Regrets? If I had any, they are forgotten."
+                },
+                {
+                    "text": "Not important."
+                },
+                {
+                    "text": "Only..."
+                },
+                {
+                    "text": "My wife. My son. Are they well?",
+                    "oncomplete": ["mentionedFamily"]
+                }
+            ]
+        },
+        {
+            "required": ["mentionedFamily", "!lyceum"],
+            "optionLabel": "Your family?",
+            "dialogue": [
+                {
+                    "text": "My dear wife, and the boy we had."
+                },
+                {
+                    "text": "She was my light, my angel, and ah, my little Martin..."
+                },
+                {
+                    "text": "Little Martin, he was growing up so well."
+                },
+                {
+                    "text": "I took them both to the Lyceum last week, no, not last week."
+                },
+                {
+                    "text": "We watched Cinderella, like I promised. Like I promised.",
+                    "journal": [
+                        {
+                            "required": ["Pedestrian:sharedName"],
+                            "text": "The train station worker had a wife and a son named Martin. Sounds familiar..."
+                        },
+                        {
+                            "text": "The station worker had a wife and a son named Martin."
+                        }
+                    ],
+                    "oncomplete": ["lyceum"],
+                    "sendLetterOnComplete": {
+                        "required": ["Bartender's Wife:!met"],
+                        "name": "Maeve McCann",
+                        "sender": "Maeve McCann",
+                        "subject": "Ghost at Fox Hotel - please investigate",
+                        "body": "<p>The strangest thing happened last night while I was dining at the Fox Hotel. There was a howl of wind and the lights flickered off.</p><p>It was only five seconds, but in that moment I swear I saw a sort of...face...peering through one of the picture frames, with blood running down her face.</p><p>When the lights came back on, it was back to normal, but I won't forget what I saw. Please check it for me!</p>"
+                    }
+                }
+            ]
+        },
+        {
+            "required": ["lyceum", "Theatregoer:acceptedQuest", "!murder"],
+            "optionLabel": "You say you went to the Lyceum? In what year?",
+            "dialogue": [
+                {
+                    "text": "That must have been nineteen forty-nine.",
+                    "journal": "The train station worker took his family to the Lyceum in 1949.",
+                    "oncomplete": ["theatre"]
+                }
+            ]
+        },
+        {
+            "required": ["theatre", "!murder"],
+            "optionLabel": "Do you know anything about the shooting there?",
+            "dialogue": [
+                {
+                "text": "Ah, the murder. It was six years...six years before my own death."
+                },
+                {
+                    "text": "The lady, Dawn Fredette, no?"
+                },
+                {
+                    "text": "Dawn Fredette, she was gone too soon."
+                },
+                {
+                    "text": "It was a soldier boy who loved her, who loved her before...she had severed ties with him, and he came and killed her, like the villain of a film.",
+                    "journal": "The lady at the theatre was murdered by her partner, a soldier.",
+                    "clearOverride": true,
+                    "oncomplete": ["murder"]
+                }
+            ]
+        },
+        {
+            "required": ["lyceum", "!sharedAddress"],
+            "optionLabel": "I think I know where you son is; I can speak to him.",
+            "dialogue": [
+                {
+                    "text": "I'd be thankful if you did.",
+                    "oncomplete": ["sharedAddress"]
+                }
+            ]
+        },
+        {
+            "required": ["Pedestrian:iAmWell", "!debt"],
+            "optionLabel": "I spoke to your son. He has passed on several decades ago, but he says he lived well.",
+            "dialogue": [
+                {
+                    "text": "To think..."
+                },
+                {
+                    "text": "To think he's&mdash;"
+                },
+                {
+                    "text": "He shakes his head.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Looking on the world from this side of the veil, this is a...relief."
+                },
+                {
+                    "text": "For we are on the same side now, aren't we?"
+                },
+                {
+                    "text": "Why, perhaps I could meet him right this very minute."
+                },
+                {
+                    "text": "So many decades it's been, I do tire of being a ghost...",
+                    "oncomplete": ["debt"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["debt", "!murder", "!goodbye"],
+            "optionLabel": "Are you still waiting for something?",
+            "dialogue": [
+                {
+                    "text": "Don't mind me..."
+                },
+                {
+                    "text": "Just taking my last look at this world..."
+                }
+            ]
+        },
+        {
+            "required": ["debt", "murder"],
+            "optionLabel": "Martin be waiting for you, I'm sure.",
+            "dialogue": [
+                {
+                    "text": "Finally."
+                },
+                {
+                    "text": "Martin, I'll be there in a minute...",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true
+                }
+            ]
+        }
+    ]
+}

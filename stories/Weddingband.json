@@ -1,0 +1,32 @@
+{
+    "name": "Wedding band",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/weddingband.png",
+    "coords": [-27.462614887642435, 153.0373489992735],
+    
+    "popups": [
+        {
+            "required": [
+                "Office Worker:acceptedQuest"
+            ],
+            "requiredItemState": [
+                "!Wedding band"
+            ],
+            "dialogue": [
+                "A wedding band with an inset diamond. The office man has been looking for this."
+            ],
+            "journal": "I found the office man's wedding band on the bank of the river near Fortitude Valley.",
+            "pickUpOnComplete": [
+                "Wedding band"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A wedding band. Tarnished, but the diamond's brilliance is untouched."
+            ]
+        }
+    ]
+}

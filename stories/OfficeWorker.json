@@ -1,0 +1,406 @@
+{
+    "name": "Office Worker",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.464227305235816, 153.03581857733866],
+    "dialogueLabel": "Office Worker",
+    
+    "sprites": {
+        "idle": "characters/office-worker.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Story-Bridge-1956.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Excuse me...",
+            "dialogue": [
+                {
+                    "text": "I’m sorry, Marie, I’m so sorry."
+                },
+                {
+                    "noLabel": true,
+                    "text": "The ghost of the man does not seem to notice you, despite your calls.",
+                    "oncomplete": [
+                        "met"
+                    ]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!ownLives"],
+            "optionLabel": "What is wrong?",
+            "dialogue": [
+                {
+                    "text": "Are you here to laugh? Then laugh. Have your fill."
+                },
+                {
+                    "text": "I bet my dad would be pleased to know how pathetic I am, even now."
+                },
+                {
+                    "text": "It makes sense, it makes sense. I earned this fate. I deserve it.",
+                    "oncomplete": ["ownLives"]
+                }
+            ]
+        },
+        {
+                "required": ["ownLives", "!fathersWords"],
+                "optionLabel": "Your father doesn't sound very pleasant.",
+                "dialogue": [
+                    {
+                        "text": "The man who controlled my life from day one?"
+                    },
+                    {
+                        "text": "'Unpleasant' is a mild way to put it."
+                    },
+                    {
+                        "text": "I'd rather not call him 'father' if I could."
+                    },
+                    {
+                        "text": "A favourite child, a manager in Evan Deakin's..."
+                    },
+                    {
+                        "text": "'The money doesn't come from thin air,' he said all the time."
+                    },
+                    {
+                        "text": "'I can't believe you're proud you're only getting by. Buck up, you useless pile of shit.'"
+                    },
+                    {
+                        "text": "I translate."
+                    },
+                    {
+                        "text": "It's all I can remember, his words are all I remember, and they burn me.",
+                        "oncomplete": ["fathersWords"]
+                    }
+                ]
+        },
+        {
+            "required": ["fathersWords", "!fathersName"],
+            "optionLabel": "Evan Deakin's? What was your father's name?",
+            "dialogue": [
+                {
+                    "text": "My father? Jonathan Wang?"
+                },
+                {
+                    "text": "Why do you care?",
+                    "oncomplete": ["fathersName"]
+                }
+            ]
+        },
+        {
+            "required": ["Builder:acceptedQuest", "fathersName", "!fatherDied"],
+            "optionLabel": "Is your father still alive?",
+            "dialogue": [
+                {
+                    "text": "How should I know?"
+                },
+                {
+                    "text": "Only thing I know is he retired."
+                },
+                {
+                    "text": "Sat on his arse all day in his little house down the coast."
+                },
+                {
+                    "text": "Who's a useless pile of shit now?",
+                    "oncomplete": ["fatherDied"]
+                }
+            ]
+        },
+        {
+            "required": ["!trust", "met", "Marie:!sharedName", "noneOfYourBusiness"],
+            "optionLabel": "Who’s Marie?",
+            "dialogue": [
+                {
+                    "text": "None of your business."
+                }
+            ]
+        },
+        {
+            "required": ["!trust", "met", "Marie:sharedName", "!sureYouHave"],
+            "optionLabel": "Marie? I think I've met her.",
+            "dialogue": [
+                {
+                    "text": "Sure you have.",
+                    "oncomplete": ["sureYouHave"]
+                }
+            ]
+        },
+        {
+            "required": ["trust", "!lostWeddingBand"],
+            "optionLabel": "Marie?",
+            "dialogue": [
+                {
+                    "text": "She is..."
+                },
+                {
+                    "text": "...She was my wife. The one good thing in this world."
+                },
+                {
+                    "text": "I don’t regret my death at all, but I do regret leaving her alone in this world."
+                },
+                {
+                    "text": "She has probably long forgotten me. Why would she remember?"
+                },
+                {
+                    "text": "I lost our wedding band when I drowned here. I no longer know where it could be. ",
+                    "oncomplete": ["lostWeddingBand"]
+                }
+            ]
+        },
+        {
+            "required": ["lostWeddingBand", "!acceptedQuest"],
+            "optionLabel": "I can find it for you.",
+            "dialogue": [
+                {
+                    "text": "I won't say no."
+                },
+                {
+                    "text": "But it seems foolish to even try."
+                },
+                {
+                    "text": "I'll be shocked if you find it."
+                },
+                {
+                    "text": "No shame if you fail, I'm not fussed.",
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        
+        {
+            "required": ["lostWeddingBand", "Marie:sharedName", "!iDontBelieve"],
+            "optionLabel": "I've talked to Marie before. She misses you, you know.",
+            "dialogue": [
+                {
+                    "text": "How could she miss someone as pitiful as me?"
+                },
+                {
+                    "text": "I don't believe it.",
+                    "oncomplete": ["iDontBelieve"]
+                }
+            ]
+        },
+        
+        {
+            "required": ["ownLives", "!trust"],
+            "optionLabel": "I’m sorry.",
+            "dialogue": [
+                {
+                    "text": "Why would you say sorry?"
+                },
+                {
+                    "text": "I brought this on myself."
+                },
+                {
+                    "text": "It's not sad if it's deserved."
+                },
+                {
+                    "text": "It's just justice.",
+                    "oncomplete": ["trust"]
+                }
+            ]
+        },
+        {
+            "required": ["Shopkeeper:sharedSonName", "fathersWords", "!dontTellHer"],
+            "optionLabel": "There’s a shopkeeper up the road. I think she's someone you may know.",
+            "dialogue": [
+                {
+                    "text": "What does a shopkeeper want with me? Tell her to leave.",
+                    "override": "shopkeeperLeave"
+                }
+            ]
+        },
+        {
+            "override": "shopkeeperLeave",
+            "optionLabel": "She’s the keeper of Fan’s Herbs and Remedies.",
+            "dialogue": [
+                {
+                    "text": "..."
+                },
+                {
+                    "text": "Fan Xujin."
+                },
+                {
+                    "text": "My father used to tell me about her."
+                },
+                {
+                    "text": "My grandma."
+                },
+                {
+                    "text": "I’m sorry, I don’t want to talk about her.",
+                    "clearOverride": true,
+                    "override": "dontWantToTalk"
+                }
+            ]
+        },
+        {
+            "override": "dontWantToTalk",
+            "optionLabel": "Why not?",
+            "dialogue": [
+                {
+                    "text": "It's none of your business."
+                },
+                {
+                    "text": "He looks chastised.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Don’t tell her I’m here.",
+                    "clearOverride": true,
+                    "oncomplete": ["dontTellHer"]
+                }
+            ]
+        },
+        {
+            "required": ["dontTellHer", "Shopkeeper:iAmHappy"],
+            "optionLabel": "I spoke to your grandmother, and...",
+            "dialogue": [
+                {
+                    "text": "And you told her I was here?"
+                },
+                {
+                    "text": "Were my instructions not clear? <i>Don't</i> tell her."
+                },
+                {
+                    "text": "I said <i>don't</i> tell her."
+                },
+                {
+                    "text": "What's your problem?",
+                    "override": "problem"
+                }
+            ]
+        },
+        {
+            "override": "problem",
+            "optionLabel": "She was simply desperate for news from her family.",
+            "dialogue": [
+                {
+                    "text": "Well, tell her her son grew up to be a complete asshole,"
+                },
+                {
+                    "text": "and tell her her grandson grew up a failure who took his own life,"
+                },
+                {
+                    "text": "and stay out of the family business.",
+                    "oncomplete": ["stayOut"]
+                }
+            ]
+        },
+        {
+            "required": ["stayOut"],
+            "optionLabel": "Your grandmother was proud to hear of you. She wished the two of you could have met.",
+            "dialogue": [
+                {
+                    "text": "How can she say that?"
+                },
+                {
+                    "text": "How can she be proud of someone she's never talked to?"
+                },
+                {
+                    "text": "How can she know anything of my life? of my father's life? Of anything that came of her bloodline?"
+                },
+                {
+                    "text": "He laughs, chokes.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Now I'm blaming her, when really it was always me. I was always the one who made a mess of things."
+                },
+                {
+                    "text": "Like my father did, always blaming the people around him rather than turn inward to look at himself."
+                },
+                {
+                    "text": "He hated me. They all did."
+                },
+                {
+                    "text": "I'm just not used to it. My existence being liked. No one's ever liked me.",
+                    "oncomplete": ["notUsed"]
+                }
+            ]
+        },
+        {
+            "required": ["notUsed"],
+            "optionLabel": "How about Marie?",
+            "dialogue": [
+                {
+                    "text": "Marie?"
+                },
+                {
+                    "text": "Did she ever like me?"
+                },
+                {
+                    "text": "Was it a lifelong charade? Was she happy to be rid of me when I died?",
+                    "override": "ridOfMe"
+                }
+            ]
+        },
+        {
+            "override": "ridOfMe",
+            "requiredItemState": ["Wedding band"],
+            "optionLabel": "For a lifelong charade, it certainly took lifetimes of effort. Here, I found your wedding band.",
+            "dialogue": [
+                {
+                    "text": "He takes the wedding band quietly from you. It hovers in the air where he cups it.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Maybe. Maybe she did.",
+                    "releaseOnComplete": true,
+                    "oncomplete": ["goodbye"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "ridOfMe",
+            "requiredItemState": ["!Wedding band"],
+            "optionLabel": "For a lifelong charade, it certainly took lifetimes of effort.",
+            "dialogue": [
+                {
+                    "text": "He shakes his head mournfully.",
+                    "noLabel": true
+                },
+                {
+                    "text": "It can't be. She must have forgotten by now..."
+                },
+                {
+                    "text": "...like I've started to. After all these years...",
+                    "oncomplete": ["memoryBare"]
+                }
+            ]
+        },
+        {
+            "required": ["memoryBare"],
+            "requiredItemState": ["Wedding band"],
+            "optionLabel": "I've found your ring.",
+            "dialogue": [
+                {
+                    "text": "He takes the wedding band quietly from you and slips it on his finger. When the ghost shimmers out of visibility, it appears to be hovering in the air.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I never forgot."
+                },
+                {
+                    "text": "Of course I remember her, of course I do."
+                },
+                {
+                    "text": "Perhaps she loved me. Perhaps she did.",
+                    "releaseOnComplete": true
+                },
+                {
+                    "text": "He disappears, and the ring clatters to the ground in front of you.",
+                    "oncomplete": ["goodbye"]
+                }
+            ]
+        },
+        {
+            "required": ["Marie:"]
+        }
+    ]
+}

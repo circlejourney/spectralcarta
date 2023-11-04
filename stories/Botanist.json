@@ -1,0 +1,218 @@
+{
+    "name": "Botanist",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.477531, 153.030590],
+    "dialogueLabel": "Botanist",
+    
+    "sprites": {
+        "idle": "characters/botanist.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Botanic-Gardens.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "text": "Oh, where could it be? If I could only leave this place&mdash;"
+                },
+                {
+                    "text": "Dear me! I did not mean to ignore you."
+                },
+                {
+                    "text": "I’ve grown so accustomed to ignoring the living, they never seem to notice me and I had thought before this that I was all but invisible to all who pass."
+                },
+                {
+                    "text": "You’re the first who has spoken to me in all these years. How is it that you see me?",
+                    "oncomplete": ["met"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!favour"],
+            "optionLabel": "I have a device here that we call a smartphone to see you by.",
+            "dialogue": [
+                {
+                    "text":"Indeed, indeed! Science has advanced faster than I ever could have imagined it would."
+                },
+                {
+                    "text": "Ah, since you are living and not tethered, could I ask a favour of you?",
+                    "oncomplete": ["favour"],
+                    "override": "favour"
+                }
+            ]
+        },
+        {
+            "override": "favour",
+            "optionLabel": "Sure.",
+            "dialogue": [
+                {
+                    "text": "It’s nothing too difficult."
+                },
+                {
+                    "text": "You see, I have been restless for a century with not knowing if my figs have flourished. If only I could roam away from this spot!"
+                },
+                {
+                    "text": "If you cannot find any, that is all right."
+                },
+                {
+                    "text": "If you can bring back a fruit of the tree to show me, I should at last be satisfied.",
+                    "clearOverride": true,
+                    "override": "offeredQuest"
+                }
+            ]
+        },
+        {
+            "override": "offeredQuest",
+            "optionLabel": "I can bring you a fig.",
+            "dialogue": [
+                {
+                    "text": "Excellent, you have my gratitude!",
+                    "oncomplete": ["acceptedQuest"],
+                    "journal": "The botanist at the Botanical Gardens has asked me to locate and bring her a fig.",
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "offeredQuest",
+            "optionLabel": "No.",
+            "dialogue": [
+                {
+                    "text": "That is all right.",
+                    "oncomplete": ["refusedQuest"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["refusedQuest"],
+            "optionLabel": "I have changed my mind.",
+            "dialogue": [
+                    {
+                        "text": "Ah, excellent, you have my gratitude!",
+                        "oncomplete": ["acceptedQuest", "!refusedQuest"],
+                        "journal": "The botanist at the Botanical Gardens has asked me to locate and bring her a fig.",
+                        "clearOverride": true
+                    }
+            ]
+        },
+        {
+            "required": ["acceptedQuest"],
+            "requiredItemState": [ "eaglefig" ],
+            "dialogueLabel": "I found this one growing by Eagle Street. The tree is a landmark by now.",
+            "dialogue": [
+                {
+                    "text": "Bless your sharp eye, that’s a fig if I have ever seen one!"
+                },
+                {
+                    "text": "A landmark, you say? I am delighted to know my work has borne fruit!"
+                },
+                {
+                    "text": "You see, before I passed on, my chief preoccupation was introducing fig trees to Brisbane."
+                },
+                {
+                    "text": "I surmised the climate would suit them, and I was thrilled at the prospect of success."
+                },
+                {
+                    "text": "Shamefully, I contracted tuberculosis and passed on, before I could witness my work come to fruition."
+                },
+                {
+                    "text": "I was certain my successors had succeeded, and I am happy to be proven right."
+                },
+                {
+                    "text": "Thank you again, thank you a thousand times!"
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "!tamarind", "!goodbye"],
+            "requiredItemState": [
+                "Tamarind"
+            ],
+            "optionLabel": "I found this brown fruit. Is this a fig?",
+            "dialogue": [
+                {
+                    "text": "Ah!"
+                },
+                {
+                    "text": "That is not a fig. It is a tamarind, another imported species.",
+                    "oncomplete": ["tamarind"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "!macadamia", "!goodbye"],
+            "requiredItemState": [
+                "Macadamia"
+            ],
+            "optionLabel": "I found this green fruit. Maybe it's a fig?",
+            "dialogue": [
+                {
+                    "text": "Ah!"
+                },
+                {
+                    "text": "That is not a fig. But it is an excellent specimen of a macadamia nut.",
+                    "oncomplete": ["macadamia"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "!goodbye"],
+            "requiredItemState": [
+                "Banyan fig"
+            ],
+            "optionLabel": "I found this red fruit. This is a fig, right?",
+            "dialogue": [
+                {
+                    "text": "Bless your sharp eye, that’s a fig if I have ever seen one!"
+                },
+                {
+                    "text": "You see, before I passed on, my chief preoccupation was introducing fig trees to Brisbane."
+                },
+                {
+                    "text": "I surmised the climate would suit them, and I was thrilled at the prospect of success."
+                },
+                {
+                    "text": "Shamefully, I contracted tuberculosis and passed on, before I could witness my work come to fruition."
+                },
+                {
+                    "text": "I was certain my successors had succeeded, and I am happy to be proven right."
+                },
+                {
+                    "text": "Thank you again, thank you a thousand times!"
+                },
+                {
+                    "text": "It's all I had hoped. Now I know it was not in vain. Now, I can move again."
+                },
+                {
+                    "text": "The next place has been awaiting me for a century. I must be going...",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "!defeat"],
+            "requiredItemState": [
+                "!Banyan fig",
+                "!Tamarind",
+                "!Macadamia"
+            ],
+            "optionLabel": "I give up, I don't think I can find one.",
+            "dialogue": [
+                {
+                    "text": "That is all right. I must simply accept that my work may have failed.",
+                    "oncomplete": ["defeat"]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,466 @@
+{
+    "name": "Waitress",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.467023, 153.028419],
+    "dialogueLabel": "Waitress",
+    
+    "sprites": {
+        "idle": "characters/waitress.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Gresham-Hotel.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "text": "Oh! Hello. It’s been a while since I was last spoken to."
+                },
+                {
+                    "text": "You can see me?",
+                    "override": "seeMe"
+                }
+            ]
+        },
+        {
+            "override": "seeMe",
+            "optionLabel": "I was given a tool for speaking to ghosts. Helping ghosts find their peace is my job.",
+            "dialogue": [
+                {
+                    "text": "Ah&hellip; Peace? What an alien, long forgotten feeling.",
+                    "oncomplete": ["noPeace", "met"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["met", "!sharedName"],
+            "optionLabel": "What is your name?",
+            "dialogue": [
+                {
+                    "text": "Taylor, Helen Taylor.",
+                    "oncomplete": ["sharedName"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!waiting", "!girlfriend" ],
+            "optionLabel": "Why are you here?",
+            "dialogue": [
+                {
+                    "text": "Why is anyone here?"
+                },
+                {
+                    "text": "It is a question with many answers."
+                },
+                {
+                    "text": "But if you mean to ask what I am doing at this specific location, the answer is simple."
+                },
+                {
+                    "text": "I am waiting.",
+                    "oncomplete": ["waiting"]
+                }
+            ]
+        },
+        {
+            "required": ["waiting", "!girlfriend", "!aSpecialLady"],
+            "optionLabel": "What are you waiting for?",
+            "dialogue": [
+                {
+                    "text": "Clients, of course&mdash;I'm a waitress."
+                },
+                {
+                    "text": "For a ghost, she appears quite pleased with her joke.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I jest. I know the Hotel that used to be here is long gone, replaced by this bar."
+                },
+                {
+                    "text": "Yet I'm still here, somehow. I don't remember how long it has been."
+                },
+                {
+                    "text": "But I think I remember what I am waiting for, now."
+                },
+                {
+                    "text": "I'm waiting for someone. A special lady.",
+                    "override": "aSpecialLady"
+                }
+            ]
+        },
+        {
+            "override": "aSpecialLady",
+            "optionLabel": "Who?",
+            "dialogue": [
+                {
+                    "text": "Patience, patience! You must allow me to build up the tension first."
+                },
+                {
+                    "text": "The person I am waiting for is Judy, my girlfriend."
+                },
+                {
+                    "text": "We had a date, she promised me.",
+                    "oncomplete": ["talkingAboutDate", "girlfriend"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "aSpecialLady",
+            "optionLabel": "It's all right if you don't wish to tell me.",
+            "dialogue": [
+                {
+                    "text": "No, I was just trying to preserve an air of mystique, as a ghost."
+                },
+                {
+                    "text": "It's what they do, no?"
+                },
+                {
+                    "text": "The person I am waiting for is Judy, my girlfriend."
+                },
+                {
+                    "text": "We had a date, she promised me.",
+                    "oncomplete": ["talkingAboutDate", "girlfriend"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["!father", "waiting", "girlfriend"],
+            "optionLabel": "Can you tell me about your life before you died?",
+            "dialogue": [
+                {
+                    "text": "Ah, an interview, is this?"
+                },
+                {
+                    "text": "I suppose there are no perils to divulging my entire life story now that I'm dead."
+                },
+                {
+                    "text": "Where to begin? I thought I was happy, till the breaking of war. My father was called to service, and he came home to my mother's departure."
+                },
+                {
+                    "text": "Who am I to ask for different?"
+                },
+                {
+                    "text": "He missed most of my childhood, both to the war and to the years of turmoil that came after."
+                },
+                {
+                    "text": "Still he did his best to be twice the parent for me."
+                },
+                {
+                    "text": "And I did live a blessed life. And I was happy, but..."
+                },
+                {
+                    "text": "You see, they both died, in the span of two years. Decades before I did."
+                },
+                {
+                    "text": "Still I did live. Married, settled, lost and lost again, till it was my turn."
+                },
+                {
+                    "text": "Not the most uplifting story, I know.",
+                    "oncomplete": ["father"]
+                }
+            ]
+        },
+        {
+            "required": ["girlfriend", "!funny"],
+            "optionLabel": "You had a date?",
+            "dialogue": [
+                {
+                    "text": "Yes, I remember now, clear as crystal. The date, it was to be here, at my work."
+                },
+                {
+                    "text": "She said, 'Wouldn't it be funny?' It was just like her, to be amused at the idea of me being a customer at my workplace.",
+                    "oncomplete": ["funny"]
+                }
+            ]
+        },
+        {
+            "required": ["sharedName", "girlfriend", "!meetAgain", "Shopper:acceptedQuest"],
+            "optionLabel": "I just spoke with her, your girlfriend.",
+            "dialogue": [
+                {
+                    "text": "Ah... Ah, my dear Judy spoke to you?"
+                },
+                {
+                    "text": "It’s about time."
+                },
+                {
+                    "text": "I was wondering if we would ever talk again.",
+                    "oncomplete": ["meetAgain"]
+                }
+            ]
+        },
+        {
+            "required": ["meetAgain", "!sick"],
+            "optionLabel": "She is still in Brisbane, like you. She's at the Brisbane Arcade.",
+            "dialogue": [
+                {
+                    "text": "It's coming back to me."
+                },
+                {
+                    "noLabel": true,
+                    "text": "She closes her eyes, as if remembering."
+                },
+                {
+                    "text": "She told me she would be there, the day before our date.",
+                    "oncomplete": ["talkingAboutDate"]
+                },
+                {
+                    "noLabel": true,
+                    "text": "Her face changes."
+                },
+                {
+                    "text": "I waited till the sun went down, and when she didn't come, I called her home."
+                },
+                {
+                    "text": "And her mother told me, her mother told me she had died."
+                },
+                {
+                    "text": "No, she was murdered."
+                },
+                {
+                    "text": "..."
+                },
+                {
+                    "text": "I feel sick.",
+                    "oncomplete": ["sick"]
+                }
+            ]
+        },
+        {
+            "required": ["funny", "!myHeart"],
+            "optionLabel": "I can help you. Do you remember any regrets from your past?",
+            "dialogue":[
+                {
+                    "text": "Now, that's very bold of you."
+                },
+                {
+                    "text": "But I shall indulge you; what better use of my time do I have, anyway?"
+                },
+                {
+                    "text": "Regrets? Perhaps \"regret\" is the wrong word."
+                },
+                {
+                    "text": "I think this strange bittersweetness that I've come to know well is not regret, but longing."
+                },
+                {
+                    "text": "To have gone down another road."
+                },
+                {
+                    "text": "I would simply like to see one of them again, my father, or Judy, but..."
+                },
+                {
+                    "text": "I don't think that's quite possible any longer, no?"
+                },
+                {
+                    "text": "Still I linger here, because my heart doesn't care for what is true or possible.",
+                    "oncomplete": ["myHeart"]
+                }
+            ]
+        },
+        {
+            "required": ["myHeart", "!acceptedQuest"],
+            "optionLabel": "I can find them and convey your messages to them.",
+            "dialogue": [
+                {
+                    "text": "Would you?"
+                },
+                {
+                    "text": "Well, if you have any success, come back and tell me right away.",
+                    "oncomplete": ["acceptedQuest"],
+                    "sendLetterOnComplete": {
+                        "name": "Haunted gardens",
+                        "sender": "Office of Mediums",
+                        "subject": "News alert: Haunted Gardens",
+                        "body": "<p>Attached is a news article that may be relevant to your search.</p><blockquote><h3>Are the Botanic Gardens haunted?</h3><p>Yesterday, Mr. Pai and Mr. Lawrence began their day with a picnic date at the City Botanic Gardens, but ended it with quite a different activity: fleeing a ghost.</p><p>The married couple reported seeing a glowing face peering through the trees close to the Superintendent's Cottage.</p><p>\"First we heard a rustling, then a mutter, and then the apparition emerged from the trees,\" says Pai.</p><p>When questioned on the appearance of the ghost, both men reported having no clear recollections of it.</p><p>Authorities have been contacted on the matter. The Botanic Gardens have been a hotbed of alleged hauntings over the past five decades.</p></blockquote>"
+                    }
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "!advisedOnFather"],
+            "optionLabel": "Where might I find your father?",
+            "dialogue": [
+                {
+                    "text": "Well, that's anyone's guess."
+                },
+                {
+                    "text": "He is missing a leg, you'll know him the moment you see him."
+                },
+                {
+                    "text": "For years he was away, fighting a huge and bloody war..."
+                },
+                {
+                    "text": "If he is a ghost now, perhaps he haunts a place linked to it...",
+                    "journal": "The waitress ghost says that her father is missing a leg, and might be haunting a place linked to the war.",
+                    "oncomplete": ["advisedOnFather"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "Shopper:!butWhy", "!advisedOnJudy"], 
+            "optionLabel": "Where might I find Judy?",
+            "dialogue": [
+                {
+                    "text": "Why, I must confess I'm not sure."
+                },
+                {
+                    "text": "She never told me where she lived, but she did frequent the malls of the city..."
+                },
+                {
+                    "text": "You'll know her right away. She has long wavy hair down to her waist.",
+                    "journal": "The waitress ghost says Judy has long wavy hair down to her waist, and frequents malls.",
+                    "oncomplete": ["advisedOnJudy"]
+                }
+            ]
+        },
+        {
+            "required": [ "meetAgain", "!thankYouForGift"],
+            "requiredItemState": [
+                "Judith's dress"
+            ],
+            "optionLabel": "Judith told me to bring you her dress, it's what she would have worn to the date.",
+            "dialogue": [
+                {
+                    "text": "Ah&hellip;"
+                },
+                {
+                    "text": "I never thought this tale would resolve. I thought I would be adrift forever."
+                },
+                {
+                    "text": "But knowing where she is&hellip;"
+                },
+                {
+                    "text": "Knowing where she is, I am happy."
+                },
+                {
+                    "text": "Please tell her, thank you."
+                },
+                {
+                    "text": "Tell her I can't wait to see her again soon.",
+                    "oncomplete": ["thankYouForGift"],
+                    "removeOnComplete": ["Judith's dress"]
+                }
+            ]
+        },
+        {
+            "required": ["Soldier:neverSaw", "!seeHim", "!meetAgain"],
+            "optionLabel": "Is Mark Taylor your father? I have just spoken with him.",
+            "dialogue": [
+                {
+                    "text": "My father!"
+                },
+                {
+                    "text": "Oh, I had missed him so."
+                },
+                {
+                    "text": "That I could leave this place to see him!",
+                    "oncomplete": ["seeHim"]
+                }
+            ]
+        },
+        {
+            "required": ["Soldier:neverSaw", "!seeHim", "meetAgain"],
+            "optionLabel": "Is Mark Taylor your father? I have just spoken with him.",
+            "dialogue": [
+                {
+                    "text": "My father!"
+                },
+                {
+                    "text": "Oh, I had missed him so. I suppose what they say about reunion in death is true."
+                },
+                {
+                    "text": "That I could leave this prison to see him!"
+                },
+                {
+                    "text": "But I am doomed to linger here, kept away from Judith and from my father.",
+                    "oncomplete": ["seeHim"]
+                }
+            ]
+        },
+        {
+            "required": ["Soldier:acceptedQuest", "seeHim", "!nothingToApologiseFor", "!offeringQuest2"],
+            "optionLabel": "Your father had a lot to say, but he cannot be here to say it himself...",
+            "dialogue": [
+                {
+                    "noLabel": true,
+                    "text": "You relate Mark Taylor's lamentations of his failures as a parent, and his regret for his early death. Helen listens in rapt attention, eyes widening with each word."
+                },
+                {
+                    "text": "..."
+                },
+                {
+                    "text": "I'm sorry."
+                },
+                {
+                    "text": "That I could never thank him for his work, that he died thinking not of himself, but of me."
+                },
+                {
+                    "text": "He did more than he ever had to; he has nothing to apologise for."
+                },
+                {
+                    "text": "I miss him, as I miss everyone I loved."
+                },
+                {
+                    "text": "That is the only thing I have known how to do, for decades upon decades."
+                },
+                {
+                    "text": "Waiting here for people who will never come.",
+                    "oncomplete": ["nothingToApologiseFor"]
+                },
+                {
+                    "text": "..."
+                },
+                {
+                    "text": "I shall perhaps take a leaf out of Judith's book."
+                },
+                {
+                    "text": "Please, if you could, bring my father my brooch."
+                },
+                {
+                    "text": "I left it at our old house at 75 Astor Terrace.",
+                    "journal": "The waitress' old house is at 75 Astor Terrace.",
+                    "oncomplete": ["offeringQuest2"]
+                }
+            ]
+        },
+        {
+            "required": ["offeringQuest2", "!acceptedQuest2"],
+            "optionLabel": "Yes, I can do that.",
+            "dialogue": [
+                {
+                    "text": "Thank you very much.",
+                    "oncomplete": ["acceptedQuest2"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest2", "thankYouForGift", "!goodbye"],
+            "optionLabel": "Is there anything else I can do?",
+            "dialogue": [
+                {
+                    "text": "Thank you...they feel closer than ever before, the people I love."
+                },
+                {
+                    "text": "I will be waiting for them, waiting wherever it is that I go next."
+                },
+                {
+                    "text": "You have my eternal gratitude. Thank you."
+                },
+                {
+                    "text": "Good-bye.",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true
+                }
+            ]
+        }
+    ]
+}

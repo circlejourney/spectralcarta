@@ -1,0 +1,372 @@
+{
+    "name": "Soldier",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.466476504306492, 153.02661156875274],
+    "dialogueLabel": "Soldier",
+    
+    "sprites": {
+        "idle": "characters/soldier.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/HMAS-Diamantina.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "text": "In the dimness the ghost materialises, drifting frantically, as if waiting for something to happen.",
+                    "noLabel": true
+                },
+                {
+                    "text": "When your voice breaks the silence, so does his concentration.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Lieutenant? Sir? Do you copy?",
+                    "oncomplete": ["met"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!orders", "!addressedLieutenant"],
+            "optionLabel": "Yes, I…copy?",
+            "dialogue": [
+                {
+                    "text": "Lieutenant, Sir, I've lost—"
+                },
+                {
+                    "text": "I’ve lost my gun, Sir!"
+                },
+                {
+                    "text": "What are your orders?",
+                    "oncomplete": ["orders", "addressedLieutenant"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!calmDown", "!addressedLieutenant"],
+            "optionLabel": "Whoa, calm down.",
+            "dialogue": [
+                {
+                    "text": "Yes, Sir, I will calm down, Sir!",
+                    "oncomplete": ["addressedLieutenant", "calmDown"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!soldier"],
+            "optionLabel": "Are you a soldier?",
+            "dialogue": [
+                {
+                    "text": "I am a soldier, and I will strive to live up to my duty as one, Sir.",
+                    "oncomplete": ["addressedLieutenant", "soldier"]
+                }
+            ]
+        },
+        {
+            "required": ["addressedLieutenant", "!whereAmI", "!biddingCrew"],
+            "optionLabel": "I'm sorry, I'm not your Lieutenant.",
+            "dialogue": [
+                {
+                    "text": "He blinks at you.",
+                    "noLabel": true
+                },
+                {
+                    "text": "What?"
+                },
+                {
+                    "text": "No...no, you're not, who are you?"
+                },
+                {
+                    "text": "Where am I?",
+                    "oncomplete": ["whereAmI"]
+                }
+            ]
+        },
+        {
+            "required": ["addressedLieutenant", "!whereAmI", "!biddingCrew"],
+            "optionLabel": "Calm down. You’re not on the battlefield anymore. You’re already dead.",
+            "dialogue": [
+                {
+                    "text": "Dead?"
+                },
+                {
+                    "text": "He releases a breath through his lips.",
+                    "noLabel": true
+                },
+                {
+                    "text": "You... You're not my lieutenant!"
+                },
+                {
+                    "text": "Who are you!?"
+                },
+                {
+                    "text": "Where am I? In heaven?"
+                },
+                {
+                    "text": "I thought death would be more painful than this."
+                },
+                {
+                    "text": "No, I didn’t die on the field&mdash;I survived. I remember this ship, they saved my life."
+                },
+                {
+                    "text": "I remember bidding the crew goodbye at the shore.",
+                    "oncomplete": ["biddingCrew"]
+                }
+            ]
+        },
+        {
+            "required": ["whereAmI", "!biddingCrew"],
+            "optionLabel": "You’re not on the battlefield anymore. You’re dead.",
+            "dialogue": [
+                {
+                    "text": "Dead?"
+                },
+                {
+                    "text": "He releases a breath through his lips.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I...I have come home?"
+                },
+                {
+                    "text": "I thought death would be more painful than this."
+                },
+                {
+                    "text": "No, I didn’t die on the field&mdash;I survived. I was rescued."
+                },
+                {
+                    "text": "I remember my return, the city was dark, as it always is...",
+                    "oncomplete": ["biddingCrew"]
+                }
+            ]
+        },
+        {
+            "required": ["biddingCrew", "!dontRemember"],
+            "optionLabel": "Could it be that you died after you came home?",
+            "dialogue": [
+                {
+                    "text": "It must be so. But I don’t remember a thing about it...",
+                    "oncomplete": ["dontRemember"]
+                }
+            ]
+        },
+        {
+            "required": ["biddingCrew", "!sharedName"],
+            "optionLabel": "What is your name?",
+            "dialogue": [
+                {
+                    "text": "Taylor, Mark B. Taylor.",
+                    "journal": "The lost soldier's name is Mark B. Taylor.",
+                    "oncomplete": ["sharedName"]
+                }
+            ]
+        },
+        {
+            "required": ["Waitress:father", "!neverSaw", "dontRemember", "sharedName"],
+            "optionLabel": "Do you know the name Helen Taylor? She spoke of her father; was it you?",
+            "dialogue": [
+                {
+                    "text": "Helen...yes."
+                },
+                {
+                    "text": "..."
+                },
+                {
+                    "text": "Dear little Helen, I miss her."
+                },
+                {
+                    "text": "I never saw her turn twenty-five."
+                },
+                {
+                    "text": "Why could I remember nothing of her before this?"
+                },
+                {
+                    "text": "Why was the war all I could think about?",
+                    "oncomplete": ["neverSaw"]
+                }
+            ]
+        },
+        {
+            "required": ["!neverSaw", "!offeringQuest", "dontRemember"],
+            "optionLabel": "What can I do to help you?",
+            "dialogue": [
+                {
+                    "text": "Help me?"
+                },
+                {
+                    "text": "Help me? What can you possibly do for me?",
+                    "oncomplete": ["whatCanYouDo"]
+                }
+            ]
+        },
+        {
+            "required": ["whatCanYouDo", "!neverSaw", "!scowl"],
+            "optionLabel": "Don't you have any lingering regrets?",
+            "dialogue": [
+                {
+                    "text": "His impassive expression is replaced by a scowl.",
+                    "noLabel": true,
+                    "oncomplete": ["scowl"]
+                },
+                {
+                    "text": "No.",
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["whatCanYouDo", "!neverSaw", "scowl"],
+            "optionLabel": "Don't you have any lingering regrets?",
+            "dialogue": [
+                {
+                    "text": "You can't help me.",
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["whatCanYouDo", "neverSaw", "!offeringQuest"],
+            "optionLabel": "I can help you find peace, do you have any lingering regrets?",
+            "dialogue": [
+                {
+                    "text": "What can bring me peace?"
+                },
+                {
+                    "text": "Why is it that all I can think of is the War?"
+                },
+                {
+                    "text": "Why is that all I can think of?"
+                },
+                {
+                    "text": "I regret&mdash;I regret being taken from Helen twice over."
+                },
+                {
+                    "text": "First by the War. Then by my vices."
+                },
+                {
+                    "text": "If I had but known, I might have chosen different, done different."
+                },
+                {
+                    "text": "The war was over, but it wouldn't leave me alone. Everywhere I saw fire, heard sirens."
+                },
+                {
+                    "text": "And I drove my body to ruin trying to escape it..."
+                },
+                {
+                    "text": "But Helen is the one who paid for my choices."
+                },
+                {
+                    "text": "If you have spoken to her... If you can tell her not a day goes by in this purgatory where I do not wish I had done better for her..."
+                },
+                {
+                    "text": "...Perhaps I will find peace then.",
+                    "oncomplete": ["offeringQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["offeringQuest", "!acceptedQuest"],
+            "optionLabel": "I will help you convey your message.",
+            "dialogue": [
+                {
+                    "text": "Tell me what she says.",
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        {
+            "requiredItemState": ["Helen's brooch"],
+            "required": ["!goodbye"],
+            "optionLabel": "I spoke to Helen. She was delighted to hear from you, and she told me to bring you this gift.",
+            "dialogue": [
+                {
+                    "text": "This...",
+                    "removeOnComplete": ["Helen's brooch"]
+                },
+                {
+                    "text": "I gave this to her before I left."
+                },
+                {
+                    "text": "My dear little Helen...she does remember after all."
+                },
+                {
+                    "text": "Thank you."
+                },
+                {
+                    "text": "What could I do to repay you, as a ghost with no possessions?",
+                    "override": "repay"
+                }
+            ]
+        },
+        {
+            "override": "repay",
+            "optionLabel": "Rest well, it's all I can ask.",
+            "dialogue": [
+                {
+                    "text": "I will. Helen, I'm coming to see you, any minute now...",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true,
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["Theatregoer:acceptedQuest", "!murder", "dontRemember"],
+            "optionLabel": "Did you murder the lady at the Lyceum theatre?",
+            "dialogue": [
+                {
+                    "text": "I’ve shot men on fields, but a theatre?"
+                },
+                {
+                    "text": "Never, no."
+                },
+                {
+                    "text": "But I think I remember, I know the murder you speak of."
+                },
+                {
+                    "text": "It was before I left on service, when he had come home from it..."
+                },
+                {
+                    "text": "He only knew how to answer threats with a gun."
+                },
+                {
+                    "text": "Of course, it twists us all. But to shoot your lover...",
+                    "oncomplete": ["murder"]
+                }
+            ]
+        },
+        {
+            "required": ["Theatregoer:acceptedQuest", "!murder", "dontRemember"],
+            "optionLabel": "Do you know about the murder at the Lyceum?",
+            "dialogue": [
+                {
+                    "text": "Ah, the Lyceum murder, it rings a bell."
+                },
+                {
+                    "text": "I remember it now."
+                },
+                {
+                    "text": "It was before I left on service, when he had come home from it..."
+                },
+                {
+                    "text": "He came home to his sweetheart ending their relationship, but the war twisted him."
+                },
+                {
+                    "text": "He only knew how to answer threats with a gun."
+                },
+                {
+                    "text": "Of course, it twists us all. But to shoot your lover...",
+                    "oncomplete": ["murder"]
+                }
+            ]
+        }
+    ]
+}

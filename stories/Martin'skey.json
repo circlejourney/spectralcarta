@@ -1,0 +1,33 @@
+{
+    "name": "Martin's key",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/keypin.png",
+    "coords": [-27.467751975586623, 153.02783994387303],
+    "associated": "Pedestrian",
+    
+    "popups": [
+        {
+            "required": [
+                "Pedestrian:acceptedQuest"
+            ],
+            "requiredItemState": [
+                "!Martin's key"
+            ],
+            "dialogue": [
+                "You found Martin's key half stuck in tar. With a sharp tug it comes loose."
+            ],
+            "journal": "I found Martin's key at the junction of Queen and George Streets.",
+            "pickUpOnComplete": [
+                "Martin's key"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "You see a rusted key half-encased in the road's tar."
+            ]
+        }
+    ]
+}

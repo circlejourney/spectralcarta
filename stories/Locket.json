@@ -1,0 +1,32 @@
+{
+    "name": "Locket",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/locket.png",
+    "coords": [-27.4649034, 153.0218955],
+    
+    "popups": [
+        {
+            "required": [
+                "Convict:acceptedQuest"
+            ],
+            "requiredItemState": [
+                "!Locket"
+            ],
+            "dialogue": [
+                "A golden locket. Inside is a photograph of an elderly woman."
+            ],
+            "journal": "",
+            "pickUpOnComplete": [
+                "Locket"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A golden locket in a display case. You shouldn't touch it."
+            ]
+        }
+    ]
+}

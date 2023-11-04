@@ -1,0 +1,52 @@
+{
+    "name": "Name",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [0, 0],
+    "dialogueLabel": "Name",
+    
+    "sprites": {
+        "idle": "characters/MaryBrown.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/PlaceholderInverted.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "example"
+            ],
+            "requiredItemState": [
+                "exampleItem"
+            ],
+            "override": "",
+            "optionLabel": "",
+            "altLabel": [
+                {
+                    "required": [""],
+                    "label": ""
+                }
+            ],
+            "dialogue": [
+                {
+                    "noLabel": false,
+                    "text": "",
+                    "oncomplete": [
+                        ""
+                    ],
+                    "journal": "",
+                    "OR_journal": [
+                        {
+                            "required": [""],
+                            "text": ""
+                        }
+                    ],
+                    "override": "",
+                    "clearOverride": true
+                }
+            ]
+        }
+    ]
+}

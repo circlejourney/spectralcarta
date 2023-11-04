@@ -1,0 +1,32 @@
+{
+    "name": "Name",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/keypin.png",
+    "coords": [0, 0],
+    
+    "popups": [
+        {
+            "required": [
+                ""
+            ],
+            "requiredItemState": [
+                ""
+            ],
+            "dialogue": [
+                "Pick up dialogue"
+            ],
+            "journal": "",
+            "pickUpOnComplete": [
+                "Name"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "Default dialogue"
+            ]
+        }
+    ]
+}

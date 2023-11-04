@@ -1,0 +1,335 @@
+{
+    "name":"Shopper",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.468586074376244, 153.02516770372677],
+    "dialogueLabel": "Shopper",
+    
+    "sprites": {
+        "idle": "characters/shopper.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Brisbane-Arcade.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "text": "It’s gone. The dress, it's gone. It was supposed to be mine!",
+                    "oncomplete": [ "met" ]
+                }
+            ]
+        },
+        {
+            "required": [
+                "met",
+                "!mentionPromise",
+                "!timeIndicated"
+            ],
+            "optionLabel": "Well, it's not yours just because you saw it.",
+            "dialogue": [
+                {
+                    "text": "No, you don’t understand! I told Josephine I wanted it."
+                },
+                {
+                    "text": "She said it had my name written on it, she promised!"
+                },
+                {
+                    "text": "If you aren't going to be helpful, then leave me be!",
+                    "oncomplete": [ "mentionPromise" ]
+                }
+            ]
+        },
+        
+        {
+            "required": [
+                    "met",
+                    "!timeIndicated"
+            ],
+            "optionLabel": "What does the dress look like?",
+            "dialogue": [
+                {
+                    "text": "Yellow. Yellow as a sunflower, with white polka dots, and white buttons down the front. Like the ones they wear in the movies.",
+                    "override": "theSixties"
+                }
+            ]
+        },
+        
+        {
+            "optionLabel": "I'm sorry, but you're dead.",
+            "required": [
+                "met",
+                "!decadesAgo"
+            ],
+            "dialogue": [
+                {
+                    "text": "What a load of rubbish. I'm as alive as you are."
+                }
+            ]
+        },
+        
+        {
+            "optionLabel": "I'm sorry, but you're dead.",
+            "required": [
+                "decadesAgo",
+                "!awareOfDeath"
+            ],
+            "dialogue": [
+                {
+                    "text": "I'm..."
+                },
+                {
+                    "text": "All this seems so real, I thought&mdash;"
+                },
+                {
+                    "text": "..."
+                },
+                {
+                    "text": "I remember now&mdash;"
+                },
+                {
+                    "text": "He did it. My brother.",
+                    "oncomplete": [ "awareOfDeath" ]
+                }
+            ]
+        },
+        
+        {
+            "override": "theSixties",
+            "optionLabel": "Buttons and polka dots? What's this, the Sixties?",
+            "dialogue": [
+                {
+                    "text": "Are you pulling my leg?"
+                },
+                {
+                    "text": "It <i>is</i> the Sixties.",
+                    "oncomplete": [ "timeIndicated" ],
+                    "clearOverride": true
+                }
+            ]
+        },
+        
+        {
+            "required": [
+                    "timeIndicated",
+                    "!decadesAgo"
+            ],
+            "optionLabel": "I'm sorry, the 60s were decades ago.",
+            "dialogue": [
+                {
+                    "text": "That’s..."
+                },
+                
+                {
+                    "text": "That’s not possible. I have a date tomorrow, the Twentieth of June, 1962, I..."
+                },
+                
+                {
+                    "text": "No, no, nothing here looks the way I remember..."
+                },
+                
+                {
+                    "text": "What year is it?",
+                    "override": "whatYear"
+                }
+            ]
+        },
+        
+        {
+            "override": "whatYear",
+            "optionLabel": "It's {CurrentYear}.",
+            "dialogue": [
+                {
+                    "text": "It's been...{YearDifference1962} years?",
+                    "oncomplete": [ "decadesAgo" ],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": [
+                "awareOfDeath",
+                "!brotherKilled"
+            ],
+            "optionLabel": "What did he do?",
+            "dialogue": [
+                { 
+                    "text": "He brought a gun&mdash;",
+                    "oncomplete": [ "brotherKilled" ]
+                }
+            ]
+        },
+        {
+            "required": [
+                "awareOfDeath",
+                "!sorry",
+                "!acceptedQuest"
+            ],
+            "optionLabel": "I'm sorry.",
+            "dialogue": [
+                {
+                    "text": "Why do you say sorry?"
+                },
+                {
+                    "text": "It’s too late to be sorry for it.",
+                    "oncomplete": [ "sorry" ]
+                }
+            ]
+        },
+        {
+            "required": [
+                "brotherKilled",
+                "!butWhy"
+            ],
+            "optionLabel": "But why did he do that?",
+            "dialogue": [
+                {
+                    "text": "He found out about Helen. My girlfriend."
+                },
+                {
+                    "text": "We had a date planned, it was supposed to happen tomorrow&mdash;no&hellip;"
+                },
+                {
+                    "text": "It was supposed to happen {YearDifference1962} years ago. I would wear my sunflower yellow dress, and we would stroll down along the mall. I was so happy&mdash;"
+                },
+                {
+                    "text": "&mdash;I told him. I thought he was ready to know. I truly did.",
+                    "oncomplete": [ "butWhy" ]
+                }
+            ]
+        },
+        
+        {
+            "required": [
+                "!acceptedQuest",
+                "!howCanYou",
+                "awareOfDeath",
+                "!butWhy"
+            ],
+            "optionLabel": "Let me help you.",
+            "dialogue": [
+                {
+                    "text": "How can you?"
+                },
+                {
+                    "text": "You can’t bring me back. I don't want payback. That’s not what I want.",
+                    "oncomplete": [
+                        "howCanYou"
+                    ]
+                }
+            ]
+        },
+        
+        {
+            "required": [
+                "!acceptedQuest",
+                "!howCanYou",
+                "awareOfDeath",
+                "butWhy"
+            ],
+            "optionLabel": "Let me help you.",
+            "dialogue": [
+                {
+                    "text": "How can you?"
+                },
+                {
+                    "text": "You can’t bring me back. You can’t take revenge. That’s not what I want."
+                },
+                {
+                    "text": "Just...find the dress, and bring it to Helen, alright?"
+                },
+                {
+                    "text": "I want her to have it. It's the last wish I have.",
+                    "override": "offeringQuest"
+                }
+            ]
+        },
+        
+        {
+            "required": [
+                "!acceptedQuest",
+                "howCanYou",
+                "awareOfDeath",
+                "butWhy"
+            ],
+            "optionLabel": "Let me help you.",
+            "dialogue": [
+                {
+                    "text": "Find the dress, and bring it to Helen, alright?"
+                },
+                {
+                    "text": "I want her to have it. It's the last wish I have.",
+                    "override": "offeringQuest"
+                }
+            ]
+        },
+        
+        {
+            "override": "offeringQuest",
+            "optionLabel": "I will.",
+            "dialogue": [
+                {
+                    "text": "Thank you.",
+                    "oncomplete": [
+                        "acceptedQuest"
+                    ],
+                    "journal": "The lady at the Brisbane Arcade wants me to find a yellow dress with white polka dots.",
+                    "clearOverride": true
+                }
+            ]
+        },
+        
+        {
+            "required": [ "acceptedQuest", "!deliverDress", "!goodbye" ],
+            "requiredItemState": ["!Judith's dress"],
+            "optionLabel": "Do you know where the dress might be?",
+            "dialogue": [
+                {
+                    "text": "Josephine told me that a man by the name of Martin Consonni bought it.",
+                    "oncomplete": ["martinDoeBoughtIt"]
+                }
+            ]
+        },
+        
+        {
+            "required": ["!deliverDress", "acceptedQuest"],
+            "requiredItemState": [ "Judith's dress" ],
+            "optionLabel": "Is this the dress?",
+            "dialogue": [
+                {
+                    "text": "That's the one! Could you deliver it to Helen?",
+                    "oncomplete": [ "deliverDress" ]
+                }
+            ]
+        },
+        
+        {
+            "required": ["Waitress:thankYouForGift"],
+            "optionLabel": "I gave Helen the dress; she says thank you, and that she can't wait to see you again soon.",
+            "dialogue": [
+                {
+                    "text": "The ghost seems momentarily frozen by your words.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Me neither, Helen, me neither..."
+                },
+                {
+                    "text": "You have done for me something I never thought could be done.",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true
+                },
+                {
+                    "text": "Thank you, goodbye..."
+                }
+            ]
+        }
+        
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "name": "Lookout Point",
+    "type": "pointofinterest",
+    "time": [0, 24],
+    "coords": [-27.46376270044581, 153.03584957070058],
+    "dialogueLabel": "Lookout Point",
+    
+    "backgrounds": {
+        "main": "characters/Story-Bridge-1938.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "Builder:acceptedQuestTwo"
+            ],
+            "requiredItemState": [
+                "Rosary"
+            ],
+            "optionLabel": "[Toss the rosary into the river]",
+            "dialogue": [
+                {
+                    "text": "With a flick, you throw the string of white beads ove the suicide barrier.",
+                    "noLabel": true,
+                    "removeOnComplete": ["Rosary"]
+                },
+                {
+                    "text": "The crucifix flashes gently in the light as it descends.",
+                    "noLabel": true,
+                    "oncomplete": ["thrownRosary"]
+                }
+            ]
+        }
+    ]
+}

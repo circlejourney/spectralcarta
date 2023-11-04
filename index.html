@@ -1,0 +1,140 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <title>The Spectral Carta: locative ghost stories for Brisbane</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <meta name="description" content="A game about 14 ghost stories in Brisbane. Walk around with your device to meet ghosts and lay them to rest.">
+        <meta name="keywords" content="ghosts,ghost stories,paranormal,brisbane">
+        
+        <link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
+        <link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
+        
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <link rel="stylesheet" href="js/leaflet/leaflet.css"/>
+        <script src="js/leaflet/leaflet.js"></script>
+        <script src="js/number-to-words/numberToWords.min.js"></script>
+  
+        <link rel="stylesheet" href="style.css">
+   
+        <script src="script.js"></script>
+    
+    </head>
+    
+    <body>
+        
+     <div id="mymap"></div>
+     
+     <div id="UI">
+         <div class="bar"></div>
+         <img class="cornice left" src="assets/corniceleft.png">
+         <img class="cornice right" src="assets/corniceright.png">
+         
+         <div class="button-panel">
+            <div id="journal-button" class="ui-button large-button" onclick="toggleJournal()">
+                <div class="button-label">Journal</div>
+                <div class="journal-indicator number-badge invisible"></div>
+            </div>
+            
+            <div id="inventory-button" class="ui-button large-button" onclick="toggleInventory()">
+                <div class="button-label">Inventory</div>
+            </div>
+            
+            <div id="letters-button" class="ui-button large-button" onclick="toggleLetters()">
+                <div class="button-label">Letters</div>
+                <div class="new-indicator number-badge invisible"></div>
+            </div>
+            
+            <div id="compass" class="large-button" onclick="panToMe()">
+                <div id="compass-needle" class="large-button"></div>
+            </div>
+        </div>
+        <div class="small-button-panel">
+            <div id="zoomin-button" class="ui-button small-button" onclick="zoom(1)">
+            </div><div id="zoomout-button" class="ui-button small-button" onclick="zoom(-1)">
+            </div><div id="notes-button" class="ui-button small-button" onclick="toggleNotes()">
+            </div><div id="save-button" class="ui-button small-button" onclick="toggleSaveMenu()">
+            </div><div id="volume-button" class="ui-button small-button" onclick="toggleSound()">
+            </div>
+        </div>
+        
+        <div class="bottom"></div>
+        
+     </div>
+     
+     <div id="overlay" class="invisible">
+         <div class="close-button ui-button small-button" onclick="closeOverlay()"></div>
+         <img id="sprite"/>
+         <div id="dialogue-box" class="panel invisible">
+             <div id="dialogue-content"></div>
+             <div id="dialogue-next" onclick="nextDialogue()"></div>
+         </div>
+         <div id="options" class="panel invisible">
+             <div id="options-content"></div>
+         </div>
+     </div>
+     
+     <div id="journal" class="panel gallery-panel invisible">
+         <h2 class="panel-title journal-title">Journal</h2>
+         <div class="panel-content" id="journal-content"></div>
+         <div class="close-button ui-button small-button" onclick="toggleJournal()"></div>
+     </div>
+     
+     <div id="inventory" class="panel gallery-panel invisible">
+         <h2 class="panel-title inventory-title">Inventory</h2>
+         <div class="panel-content" id="inventory-content"></div>
+         <div class="close-button ui-button small-button" onclick="toggleInventory()"></div>
+     </div>
+     
+     <div id="letters" class="panel gallery-panel invisible">
+         <h2 class="panel-title letters-title">Letters <span class="new-indicator string-indicator invisible"></span></h2>
+         <div class="panel-content" id="letters-content"></div>
+         <div class="close-button ui-button small-button" onclick="toggleLetters()"></div>
+     </div>
+     
+    <div id="info">
+         <a href="/spectralcarta/?playtest" id="playlink"><span id="playother">desktop</span> version</a>
+    </div>
+    
+    <div id="notes" class="panel gallery-panel invisible notes-panel">
+         <div class="close-button ui-button small-button" onclick="toggleNotes()"></div>
+         <h2 class="panel-title notes-panel-title">Notes</h2>
+         <div id="notes-content" class="panel-content">
+             <p>This game was created by Amari Low in partial fulfillment of the requirements for the degree of Master of Interactive Media. The accompanying exegesis can be found <a href="Exegesis.pdf" target="_blank">at this link</a>. <span class="invisible" id="mobile-instructions">You are playing the mobile version of the game; this version is GPS-controlled, and markers can be accessed by walking to various locations around Brisbane. <a href="https://circlejourney.net/spectralcarta?playtest">Click here to play the desktop version.</a></span> <span class="invisible" id="desktop-instructions">You are playing the desktop version of the game; it is controlled with the WASD keys, corresponding to up, left, right and down respectively. <a href="https://circlejourney.net/spectralcarta">Click here to play the GPS mobile version.</a></span></p>
+             <p>If you should have any thoughts or concerns, do email me at circlejourneyart@gmail.com or my supervisor Dr. Jason Nelson at w.nelson@griffith.edu.au.</p>
+             <hr>
+            <h2 class="notes-header">Acknowledgment of Country</h2>
+                <p>
+                    I acknowledge the Turrbal and Yuggera people, the traditional custodians of the Country on which this game takes place. I honour their continuing connection to the lands, waters and community. I pay respect to Elders past, present and emerging.</p>
+                <p>Brisbane, and the buildings and establishments featured in this game, are built upon stolen land and upon centuries of violence against Aboriginal peoples. Educational materials can be found on <a href="https://aiatsis.gov.au/" target="_blank">the Australian Institute of Aboriginal and Torres Strait Islander Studies website</a>.</p>
+            
+            <h2 class="notes-header">Disclaimer</h2>
+            <p>Do pay attention to your surroudings as you play; the creators of this game are not responsible for any injury or damage to property that may arise from playing this game.</p>
+            
+            <h2 class="notes-header">Content warning</h2>
+            <p>This game contains major themes of violence, death, ghosts, hauntings and suicide. It contains visual depictions of ghosts and injury. Vulnerable individuals are advised to proceed at their own discretion.</p>
+        </div>
+    </div>
+    
+    <div id="save-panel" class="invisible" onclick="toggleSaveMenu()">
+        <div id="save-menu" class="panel" onclick="(function(event){event.stopPropagation()})(event)">
+            <div>This game autosaves in your browser.</div>
+            <div class="save-option" onclick="saveJSON()">Save as file (transfer to other device)</div>
+            <div class="save-option">Load save <input type="file" id="save-loader" onchange="loadSaveFile(event)"></div>
+            <div class="save-option" onclick="toggleReset()">Reset game</div>
+            <div class="save-option" onclick="toggleSaveMenu()">Cancel</div>
+        </div>
+    </div>
+    
+    <div id="reset-panel" class="invisible" onclick="toggleReset()">
+        <div id="reset-menu" class="panel" onclick="(function(event){event.stopPropagation()})(event)">
+            <div>Are you sure? (If you change your mind, you can save a copy of your game file and revisit it later.)</div>
+            <div class="button-row">
+                <button onclick="resetForReal()">Reset</button>
+                <button onclick="toggleReset()">Back</button>
+            </div>
+        </div>
+    </div>
+    
+    </body>
+</html>

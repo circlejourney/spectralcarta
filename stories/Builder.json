@@ -1,0 +1,284 @@
+{
+    "name": "Builder",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.46298031938667, 153.0356513005392],
+    "dialogueLabel": "Builder",
+    
+    "sprites": {
+        "idle": "characters/builder.png"
+    },
+    "backgrounds": {
+        "main": "characters/Story-Bridge-1938.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "noLabel": true,
+                    "text": "The ghost pays you no heed, even when you speak. He hovers from pole to pole, eyes cast down.",
+                    "oncomplete": [
+                        "met"
+                    ]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!nothingYouCanDo"],
+            "optionLabel": "I am here to help you.",
+            "dialogue": [
+                {
+                    "text": "Help? No."
+                },
+                {
+                    "text": "Nothing y' can do.",
+                    "oncomplete": ["nothingYouCanDo"]
+                }
+            ]
+        },
+        {
+            "required": ["nothingYouCanDo", "!noNothing"],
+            "optionLabel": "Surely there is something you are unhappy about, if you are lingering here.",
+            "dialogue": [
+                {
+                    "text": "No, nothing. Leave me.",
+                    "oncomplete": ["noNothing"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!fell"],
+            "optionLabel": "How did you end up here?",
+            "dialogue": [
+                {
+                    "text": "End up here? Dead, ya mean?"
+                },
+                {
+                    "text": "He barks a laugh.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Fell to my death. Died on the riverbed.",
+                    "oncomplete": ["fell"]
+                }
+            ]
+        },
+        {
+            "required": ["fell", "!explainedDeath"],
+            "optionLabel": "How did you fall?",
+            "dialogue": [
+                {
+                    "text": "Nosy, aren't ya?"
+                },
+                {
+                    "text": "Boss wouldn't listen when I said the cord was fraying."
+                },
+                {
+                    "text": "Boss thought I was trying to skive.",
+                    "oncomplete": ["explainedDeath"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!explainedDeath"],
+            "optionLabel": "Do you have any regrets from your life past?",
+            "dialogue": [
+                {
+                    "text": "Funny person, asking me like I remember.",
+                    "oncomplete": ["likeIRemember"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "explainedDeath", "!shouldHaveSuffered"],
+            "optionLabel": "Do you have any regrets from your life past?",
+            "altLabel": [
+                {
+                    "required": ["likeIRemember"],
+                    "label": "Are you sure you have no regrets?"
+                }
+            ],
+            "dialogue": [
+                {
+                    "text": "Regrets? Ha."
+                },
+                {
+                    "text": "Only one that I can think of. That no one paid for my death."
+                },
+                {
+                    "text": "Boss...Jonathan Wang...that man should have suffered.",
+                    "oncomplete": ["shouldHaveSuffered"]
+                }
+            ]
+        },
+        {
+            "required": ["shouldHaveSuffered", "!acceptedQuest"],
+            "optionLabel": "I...I can help you.",
+            "altLabel": [
+                {
+                    "required": ["nothingYouCanDo"],
+                    "label": "I...I did say I would help you."
+                }
+            ],
+            "dialogue": [
+                {
+                    "text": "Y' wanna help?"
+                },
+                {
+                    "text": "I want to know that he suffered."
+                },
+                {
+                    "text": "And if he di'n't, make him.",
+                    "override": "makeHim"
+                }
+            ]
+        },
+        {
+            "override": "makeHim",
+            "optionLabel": "I...I can't do that.",
+            "dialogue": [
+                {
+                    "text": "Coward. Said y'd help."
+                },
+                {
+                    "text": "So help.",
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        {
+            "override": "makeHim",
+            "optionLabel": "I...I suppose I can.",
+            "dialogue": [
+                {
+                    "text": "Good.",
+                    "clearOverride": true,
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["Office Worker:fathersName", "!disgusting"],
+            "optionLabel": "I met your boss' son.",
+            "dialogue": [
+                {
+                    "text": "Lived long enough to spread his seed."
+                },
+                {
+                    "text": "Disgusting.",
+                    "oncomplete": ["disgusting"]
+                }
+            ]
+        },
+        {
+            "required": ["disgusting", "Office Worker:fatherDied", "!toThink"],
+            "optionLabel": "His son died before he did, jumping off this very bridge.",
+            "dialogue": [
+                {
+                    "text": "..."
+                },
+                {
+                    "text": "Ah."
+                },
+                {
+                    "text": "Now I feel like an arsehole."
+                },
+                {
+                    "text": "Wouldn’t wish that upon any man. Even the man who caused my death."
+                },
+                {
+                    "text": "To think I helped build the very bridge that killed his son.",
+                    "oncomplete": ["toThink"]
+                }
+            ]
+        },
+        {
+            "required": ["toThink", "!soICanGuess", "!acceptedQuestTwo"],
+            "optionLabel": "His son seemed to hate him as much as you do.",
+            "dialogue": [
+                {
+                    "text": "More's the pity, then."
+                },
+                {
+                    "text": "This man outlived everyone who hated him."
+                },
+                {
+                    "text": "Or so I can only guess.",
+                    "override": "soICanGuess"
+                }
+            ]
+        },
+        {
+            "override": "soICanGuess",
+            "optionLabel": "...",
+            "dialogue": [
+                {
+                    "text": "I remember now, what I miss. <i>My</i> father."
+                },
+                {
+                    "text": "Meant to be buried with my father's rosary."
+                },
+                {
+                    "text": "My connection to my home, my family, my God."
+                },
+                {
+                    "text": "But my body never washed back to shore."
+                },
+                {
+                    "text": "If y' could find it..."
+                },
+                {
+                    "text": "...and toss it off the bridge and into the river, where the water is deepest..."
+                },
+                {
+                    "text": "...the river, my grave.",
+                    "required": "The Story Bridge builder's ghost wants you to find his rosary and toss it into the river where he died.",
+                    "oncomplete": ["acceptedQuestTwo"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuestTwo", "!ivoryLane"],
+            "optionLabel": "I can. Where will I find it?",
+            "dialogue": [
+                {
+                    "text": "Hanging upon a tree on Ivory Lane, right where I left it.",
+                    "oncomplete": ["ivoryLane"]
+                }
+            ]
+        },
+        {
+            "required": ["!middleOfBridge"],
+            "requiredItemState": ["Rosary"],
+            "optionLabel": "I've found the rosary.",
+            "dialogue": [
+                {
+                    "text": "If y'll go to the middle of the bridge, right where the river is deepest...",
+                    "oncomplete": ["middleOfBridge"]
+                }
+            ]
+        },
+        {
+            "required": ["Lookout Point:thrownRosary"],
+            "optionLabel": "I have done as you told me to.",
+            "dialogue": [
+                {
+                    "text": "I know."
+                },
+                {
+                    "text": "I already feel lighter..."
+                },
+                {
+                    "text": "As if a gnawing worry has lifted...",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true
+                }
+            ]
+        }
+    ]
+}

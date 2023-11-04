@@ -1,0 +1,411 @@
+{
+    "name":"Pedestrian",
+    "type": "character",
+    "dialogueLabel": "Pedestrian",
+    
+    "sprites": {
+        "idle": "characters/pedestrian.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Queen-Street.jpg"
+    },
+    
+    "time": [0, 24],
+    
+    "coords": [-27.469791017508033, 153.02510925489656],
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello, sir.",
+            "dialogue": [
+                {
+                    "text": "You hear the disquieted grumbling before you even see the ghost.",
+                    "noLabel": true
+                },
+                {
+                    "text": "It can't have fallen far! Oh, blast it!"
+                },
+                {
+                    "text": "For a spectral presence, there is nothing subtle about this man.",
+                    "noLabel": true,
+                    "override": "blast"
+                }
+            ]
+        },
+        {
+            "override": "blast",
+            "optionLabel": "What's the matter?",
+            "dialogue": [
+                {
+                    "text": "Have you by any chance seen a small golden key 'round here?"
+                },
+                {
+                    "text": "It was right there in m' pocket."
+                },
+                { 
+                    "text": "I saw the lady at the theatre drop it, she must need it."
+                },
+                {
+                    "text": "But I dropped it too! What a slippery little bugger.",
+                    "oncomplete": [
+                        "met"
+                    ],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["met", "!whereCars", "!cantHaveDied"],
+            "optionLabel": "Have you checked your other pockets?",
+            "dialogue": [
+                {
+                    "text": "I sincerely doubt the key could wriggle out of one pocket and into the other, but..."
+                },
+                {
+                    "text": "The ghost pats his pocket, and pauses.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Something's not right. Where did these trees come from? Where are the cars?",
+                    "oncomplete": ["whereCars"]
+                }
+            ]
+        },
+        
+        {
+            "required": ["met", "!cantHaveDied"],
+            "optionLabel": "Maybe you dropped it because you're dead.",
+            "altLabel": [
+                {
+                    "required": ["whereCars"],
+                    "label": "It's been ages since this road was used by cars...you're dead, you see."
+                }
+            ],
+            "dialogue": [
+                {
+                    "text": "Are you saying I've carked it? Are you having me on?"
+                },
+                {
+                    "text": "I'm right as rain, mate!"
+                },
+                {
+                    "text": "He tries to grip your arm. His fingers slip right through.",
+                    "noLabel": true
+                },
+                {
+                    "text": "It takes a moment for it to register on his face.",
+                    "noLabel": true
+                },
+                {
+                    "text": "No, ."
+                },
+                {
+                    "text": "I was just running there, not five minutes ago,"
+                },
+                {
+                    "text": "crossing the road, and the evening traffic..."
+                },
+                {
+                    "text": "His eyes go wide.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I can't have. No!",
+                    "oncomplete": ["cantHaveDied"]
+                }
+            ]
+        },
+        {
+            "required": ["cantHaveDied", "!offeringQuest"],
+            "optionLabel": "It's all right. I am here to help lay your lingering regrets to rest.",
+            "dialogue": [
+                {
+                    "text": "No, no, I can't be..."
+                },
+                {
+                    "text": "If that is the case..."
+                },
+                {
+                    "text": "Then you must find me that key."
+                },
+                {
+                    "text": "I saw her drop it. The lady at the Customs House."
+                },
+                {
+                    "text": "I picked it up, and I'd meant to return it to her, but..."
+                },
+                {
+                    "text": "But I suppose I never got that far.",
+                    "oncomplete": ["offeringQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["offeringQuest", "!acceptedQuest"],
+            "optionLabel": "I can find you your key. Where is it?",
+            "dialogue": [
+                {
+                    "text": "It must have fallen when I was running up the road. I tripped on the pavement right by the Post Office..."
+                },
+                {
+                    "text": "Perhaps it was then that it fell.",
+                    "journal": [
+                        {
+                            "required": ["sharedName"],
+                            "text": "Martin says he may have dropped the key outside the Post Office."
+                        },
+                        {
+                            "text": "The pedestrian ghost says he may have dropped the key outside the Post Office."
+                        }
+                    ],
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        
+        {
+            "required": ["met", "!sharedName"],
+            "optionLabel": "What is your name?",
+            "dialogue": [
+                {
+                    "text": "Martin Consonni, the one and only!",
+                    "journal": "The ghost at the junction is named Martin Consonni."
+                },
+                {
+                    "text": "Have you heard of me before? I'm a bit of a celebrity 'round here.",
+                    "oncomplete": ["sharedName"]
+                }
+            ]
+        },
+        
+        {
+            "required": [
+                "met",
+                "!goodbye",
+                "!bringIt"
+            ],
+            "requiredItemState": [
+                "Martin's key"
+            ],
+            "optionLabel": "Here's your key.",
+            "dialogue": [
+                {
+                    "text": "You found it..."
+                },
+                {
+                    "text": "Well done, well done."
+                },
+                {
+                    "text": "Now, would you be so kind as to bring it to the officer at the Customs House?",
+                    "oncomplete": [
+                        "bringIt"
+                    ]
+                }
+            ]
+        },
+        {
+           "required": [
+               "offeringQuest",
+               "!gaveDirections"
+            ],
+            "optionLabel": "The customs house? Where is that?",
+            "dialogue": [
+                {
+                    "text": "Not from 'round here, are you?"
+                },
+                {
+                    "text": "Straight up Queen Street till you hit the pier.",
+                    "journal": "I can reach the Customs House by walking northward up Queen Street to the pier."
+                },
+                {
+                    "text": "You can't miss it.",
+                    "oncomplete": ["gaveDirections"]
+                }
+            ]
+        },
+        {
+            "required": ["Marie:returnedKey", "!tooLate"],
+            "optionLabel": "I returned your key. Sadly, the officer was also long dead.",
+            "dialogue": [
+                {
+                    "text": "Well...better late than never."
+                },
+                {
+                    "text": "Though, in this case...perhaps it was <i>too</i> late.",
+                    "sendLetterOnComplete": {
+                        "name": "Jack Daw",
+                        "sender": "Jack Daw",
+                        "subject": "Saw a phantom at the bar?!",
+                        "body": "<p>I was just minding my own business all alone at the Gresham Bar, when I saw a ghost! She was right by the entrance, a flickering apparition with a face. I was too freaked out to look closer, but I blinked and she was gone.</p><p>If you've got the time, please investigate!</p>"
+                    },
+                    "oncomplete": ["tooLate"]
+                }
+            ]
+        },
+        {
+            "required": ["tooLate", "!acceptedQuest2"],
+            "optionLabel": "Is there anything else I can do for you?",
+            "dialogue":[
+                {
+                    "text": "Well...since you've been so helpful, I do have something to say."
+                },
+                {
+                    "text": "He appears a little sheepish before he continues.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I miss m' father. Since you're clearly capable of speaking to ghosts..."
+                },
+                {
+                    "text": "Would you tell him I send m' regards?"
+                },
+                {
+                    "text": "Oh, I don't even know if he's even around, but..."
+                },
+                {
+                    "text": "'s worth a try?",
+                    "override": "offeringQuest2"
+                }
+            ]
+        },
+        {
+            "override": "offeringQuest2",
+            "optionLabel": "I can certainly look around and try.",
+            "dialogue": [
+                {
+                    "text": "No worries.",
+                    "oncomplete": ["acceptedQuest2"],
+                    "clearOverride": true
+                },
+                {
+                    "text": "He's a, a tall guy. Used to lug wood onto the trains and such."
+                },
+                {
+                    "text": "He was always at Roma Street Station, would you give it a squizz?",
+                    "journal": "Martin wants me to find his father. That's assuming his father is still around... He says he was a big guy who loaded wood onto trains at Roma Street Station.",
+                    "oncomplete": ["describedDad"]
+                }
+            ]
+        },
+        {
+            "required": ["Shopper:martinDoeBoughtIt", "sharedName", "!gatheringDust"],
+            "optionLabel": "I am told you once bought a yellow dress. Someone wants it.",
+            "dialogue": [
+                {
+                    "text": "A yellow dress, you say..."
+                },
+                {
+                    "text": "Just the other year..."
+                },
+                {
+                    "text": "'s gathering dust in m' garage, no doubt."
+                },
+                {
+                    "text": "If you are so fangin' for that dress, I reckon it couldn't hurt to give it to someone who wants it more."
+                },
+                {
+                    "text": "Now, it ain't exactly right..."
+                },
+                {
+                    "text": "Find it at Thirty-Seven Leichhardt Street, if you will.",
+                    "journal": "The dress is as Thirty-Seven Leichhardt Street.",
+                    "oncomplete": ["gatheringDust"]
+                }
+            ]
+        },
+        {
+            "required": ["sharedName", "Cargo Loader:sharedAddress", "!iAmWell"],
+            "optionLabel": "Would you happen to be the son of a man who loaded cargo onto trains?",
+            "dialogue": [
+                {
+                    "text": "Did you meet me old man?"
+                },
+                {
+                    "text": "Yeah, that sounds like him, alright."
+                },
+                {
+                    "text": "Carked it in an accident when I was a boy..."
+                },
+                {
+                    "text": "Is he here? You have a knack for seeing the dead, don't you?",
+                    "override": "knack"
+                }
+            ]
+        },
+        {
+            "override": "knack",
+            "optionLabel": "I did. He seems to want to know if you're well...",
+            "dialogue": [
+                {
+                    "text": "I wouldn't say I'm well."
+                },
+                {
+                    "text": "But I did alright. I truly did."
+                },
+                {
+                    "text": "Me mum had mates, she learned to paint and sold her work in the markets."
+                },
+                {
+                    "text": "She missed him so, but she always said \"Just keep swimming!\" And she made what she could of her life."
+                },
+                {
+                    "text": "She must miss me, as she misses the old man...but I'm certain, I'm positive she's done alright for herself, too."
+                },
+                {
+                    "text": "I did too. Me last birthday was m' thirty-fifth, oh that seems so long ago..."
+                },
+                {
+                    "text": "We had mates over, and we sat out on our verandah at Thirty-Seven Leichhardt Street, drinking and stargazing...",
+                    "journal": "Martin lived at Thirty-Seven Leichhardt Street."
+                },
+                {
+                    "text": "What I mean to say is, tell me old man...I did alright." ,
+                    "oncomplete": ["iAmWell"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["Cargo Loader:goodbye", "Marie:returnedKey", "!goodbye"],
+            "optionLabel": "Your father seemed pleased to know you have lived well, and wishes to see you again soon.",
+            "dialogue": [
+                {
+                    "text": "See me again! Ah!"
+                },
+                {
+                    "text": "I gave up hope of seeing the old man, yonks ago."
+                },
+                {
+                    "text": "From the day we got the call,"
+                },
+                {
+                    "text": "it was like he boarded a train and left without a word."
+                },
+                {
+                    "text": "Like he was still living, just in a place I could never see him!"
+                },
+                {
+                    "text": "And this, hearing news from him again, why..."
+                },
+                {
+                    "text": "'s like the train has rolled back into the station and the conductor's waving at me shouting,"
+                },
+                {
+                    "text": "\"Sorry mate, didn't see you there.\""
+                },
+                {
+                    "text": "Well, I guess I gotta jump on the train."
+                },
+                {
+                    "text": "Good on ya, kid. See ya!",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true
+                }
+            ]
+        }
+    ]
+}

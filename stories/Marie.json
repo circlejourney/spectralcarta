@@ -1,0 +1,409 @@
+{
+    "name": "Marie",
+    "coords": [-27.465379442110912, 153.0310291541983],
+    "type": "character",
+    "time": [0, 24],
+    "dialogueLabel": "Customs Officer",
+    
+    "sprites": {
+        "idle": "characters/Marie.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/PlaceholderInverted.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "met",
+                "!returnedKey"
+            ],
+            "requiredItemState": ["Martin's key"],
+            "optionLabel": "I have been told to give you a key. I think it's you, anyway.",
+            "dialogue": [
+                {
+                    "text": "A key? Could it be?"
+                },
+                {
+                    "text": "You hand the ghost the key.",
+                    "removeOnComplete": ["Martin's key"],
+                    "oncomplete": ["returnedKey"],
+                    "noLabel": true
+                },
+                {
+                    "text": "What a surprise. I haven't seen this thing in years.",
+                    "journal": "I returned the key to the customs officer. I'm a few years late, but still..."
+                },
+                {
+                    "text": "I was supposed to lock up the office, but I must have lost this key while I was walking."
+                },
+                {
+                    "text": "I simply tied the doors shut with cord, but I was found out."
+                },
+                {
+                    "text": "And fired."
+                },
+                {
+                    "text": "This comes several years too late, but...it's good to see it hasn't been lost, at least."
+                },
+                {
+                    "text": "Oh yes, I am Marie, by the way.",
+                    "oncomplete": ["sharedName", "met"]
+                }
+            ]
+        },
+        {
+            "required": ["!met"],
+            "optionLabel": "Hello there, what brings you to the Customs House?",
+            "dialogue": [
+                {
+                    "text": "I'm an officer here..."
+                },
+                {
+                    "text": "Or, I was, till I was fired from my job."
+                },
+                {
+                    "text": "Now I..."
+                },
+                {
+                    "text": "Now I, I don't know what I'll do.",
+                    "oncomplete": ["iDontKnow", "met"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!sharedName"],
+            "optionLabel": "What is your name?",
+            "dialogue": [
+                {
+                    "text": "Marie.",
+                    "oncomplete": ["sharedName"]
+                }
+            ]
+        },
+        {
+            "required": ["sharedName", "!howLong"],
+            "optionLabel": "Is there any reason you're here?",
+            "dialogue": [
+                {
+                    "text": "I'm not sure, really."
+                },
+                {
+                    "text": "I thought I was looking for my key, but that can't be it. I lost the key years ago."
+                },
+                {
+                    "text": "Come to think of it, how long has it been?",
+                    "oncomplete": ["howLong"]
+                }
+            ]
+        },
+        {
+            "required": ["howLong", "!joking", "!heavier"],
+            "optionLabel": "It must have been long. You've become a ghost.",
+            "dialogue": [
+                {
+                    "text": "She eyes you suspiciously.",
+                    "noLabel": true
+                },
+                {
+                    "text": "You're joking, right?",
+                    "oncomplete": ["joking"]
+                }
+            ]
+        },
+        {
+            "required": ["howLong", "!heavier"],
+            "optionLabel": "What year do you last remember it being?",
+            "dialogue": [
+                {
+                    "text": "1969...",
+                    "override": "nineteensixtynine"
+                }
+            ]
+        },
+        {
+            "override": "nineteensixtynine",
+            "optionLabel": "Ah, it has been {YearDifference1969} years.",
+            "dialogue": [
+                {
+                    "text": "{YearDifference1969}...what?"
+                },
+                {
+                    "text": "That can't be right. Let me check my schedule."
+                },
+                {
+                    "text": "She reaches into her pockets, and searches for a moment, but comes up empty.",
+                    "noLabel": true
+                },
+                {
+                    "text": "But if I'd died, then I would remember it, wouldn't I?"
+                },
+                {
+                    "text": "How can I be dead?",
+                    "override": "howCanI",
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "howCanI",
+            "required": ["helpMeRemember"],
+            "optionLabel": "Ghosts often struggle with remembering things.",
+            "dialogue": [
+                {
+                    "text": "Can you&mdash;can you help me find out what happened?",
+                    "oncomplete": ["helpMeRemember"]
+                }
+            ]
+        },
+        {
+            "override": "howCanI",
+            "optionLabel": "What do you remember of your past life?",
+            "altLabel": [
+                {
+                    "required": ["helpMeRemember"],
+                    "label": "Of course. What do you remember of your past life?"
+                }
+            ],
+            "dialogue": [
+                {
+                    "text": "I had a job, a home, a husband."
+                },
+                {
+                    "text": "It was a marriage that saw its troubles, but we worked hard for it, Wei and I."
+                },
+                {
+                    "text": "Then it all...",
+                    "oncomplete": ["weisName"],
+                    "clearOverride": true,
+                    "override": "disappeared"
+                }
+            ]
+        },
+        {
+            "override": "disappeared",
+            "optionLabel": "You don't have to go on.",
+            "dialogue": [
+                {
+                    "text": "No, not at all."
+                },
+                {
+                    "text": "The bridge. The Story Bridge. Till the day he did it, I had no idea he would..."
+                },
+                {
+                    "text": "I would have thought I would have seen some sign, anything, but I had failed to."
+                },
+                {
+                    "text": "I had failed him."
+                },
+                {
+                    "text": "Some move forward, and I tried to too, but...",
+                    "oncomplete": ["heavier"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "disappeared",
+            "optionLabel": "What happened?",
+            "dialogue" : [
+                {
+                    "text": "Her brow furrows, and she seems reluctant to go on.",
+                    "noLabel": true
+                },
+                {
+                    "text": "The bridge. The Story Bridge. The day he died, I had no idea he would..."
+                },
+                {
+                    "text": "I would have thought I would have seen some sign, anything, but I had failed to."
+                },
+                {
+                    "text": "Some move forward, and I tried to too, but...",
+                    "oncomplete": ["heavier"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["heavier", "!seeWei"],
+            "dialogue": [
+                {
+                    "text": "I remember how it happened."
+                },
+                {
+                    "text": "In my bed. Deep sleep. Overdose."
+                },
+                {
+                    "text": "I was so alone, you see."
+                },
+                {
+                    "text": "All I could feel was the cold."
+                },
+                {
+                    "text": "And I missed them all, friends, family..."
+                },
+                {
+                    "text": "My life was a video on loop now, and the one I looped the most was the day five years ago,"
+                },
+                {
+                    "text": "when I thought that was the happiest I could be."
+                },
+                {
+                    "text": "Now...I just wish I could see Wei again. Just once."
+                },
+                {
+                    "text": "Would you find something of his for me?",
+                    "oncomplete": ["seeWei"]
+                }
+            ]
+        },
+        {
+            "required": ["seeWei", "!acceptedQuest"],
+            "optionLabel": "Yes, I will do my best.",
+            "dialogue": [
+                {
+                    "text": "If you can't...that's no trouble at all.",
+                    "journal": "The usherette wants me to find something belonging to her husband, Wei. Where? I'm not quite sure.",
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["sharedName", "Office Worker:fathersWords", "!grief"],
+            "optionLabel": "Marie? Did Wei by any chance have a father who worked at Evan Deakin's?",
+            "dialogue": [
+                {
+                    "text": "Yes."
+                },
+                {
+                    "text": "He hated the man to the very core of his being."
+                },
+                {
+                    "text": "She seems incapable of going on, and looks away.",
+                    "override": "wangwei",
+                    "noLabel": true
+                }
+            ]
+        },
+        {
+            "override": "wangwei",
+            "optionLabel": "I talked to him. He misses you.",
+            "dialogue": [
+                {
+                    "text": "Her eyes return to you.",
+                    "noLabel": true
+                },
+                {
+                    "text": "He's here?"
+                },
+                {
+                    "text": "Does he? I miss him too."
+                },
+                {
+                    "text": "What else did he say?",
+                    "override": "whatElse",
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "whatElse",
+            "optionLabel": "He said losing you was the only thing he regretted when he died.",
+            "dialogue": [
+                {
+                    "text": "How? How can that be?"
+                },
+                {
+                    "text": "Did he truly think so harshly of himself?"
+                },
+                {
+                    "text": "How could I not have seen it?",
+                    "oncomplete": ["grief"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["grief"],
+            "requiredItemState": [
+                "Wedding band"
+            ],
+            "optionLabel": "I found his wedding band on the river bank.",
+            "dialogue": [
+                {
+                    "text": "She takes the ring from you and turns it about in the light.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Her eyes cloud over.",
+                    "noLabel": true
+                },
+                {
+                    "text": "This is his."
+                },
+                {
+                    "text": "I missed the man who wore this ring."
+                },
+                {
+                    "text": "But now I know he is there...",
+                    "override": "missed"
+                }
+            ]
+        },
+        {
+            "override": "missed",
+            "dialogue": [
+                {
+                    "text": "A door has opened before me."
+                },
+                {
+                    "text": "If I were to pass through, would I see him on the other side?",
+                    "clearOverride": true,
+                    "override": "otherSide"
+                }
+            ]
+        },
+        {
+            "override": "otherSide",
+            "required": ["!goodbye"],
+            "optionLabel": "Yes, I think so.",
+            "dialogue": [
+                {
+                    "text": "Then I shall go."
+                },
+                {
+                    "text": "Thank you.",
+                    "releaseOnComplete": true,
+                    "oncomplete": ["goodbye"]
+                },
+                {
+                    "text": "Her figure fades, and the pavement is eerily empty once again.",
+                    "noLabel": true
+                }
+            ]
+        },
+        {
+            "override": "otherSide",
+            "required": ["!goodbye"],
+            "optionLabel": "That's outside my expertise, but there's only one way to find out.",
+            "dialogue": [
+                {
+                    "text": "Then..."
+                },
+                {
+                    "text": "I have spent several years too many here."
+                },
+                {
+                    "text": "I have no more business here."
+                },
+                {
+                    "text": "Her figure fades, and the pavement is eerily empty once again.",
+                    "releaseOnComplete": true,
+                    "oncomplete": ["goodbye"],
+                    "noLabel": true
+                }
+            ]
+        }
+    ]
+}

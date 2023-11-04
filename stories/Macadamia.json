@@ -1,0 +1,29 @@
+{
+    "name": "Macadamia",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/fruit3.png",
+    "coords": [-27.4776216, 153.0312386],
+    
+    "popups": [
+        {
+            "required": [
+                "Botanist:acceptedQuest"
+            ],
+            "dialogue": [
+                "A small green fruit. Perhaps this is a fig?"
+            ],
+            "journal": "I found a small green fruit on the ground in the Botanic Gardens. Perhaps this is a fig?",
+            "pickUpOnComplete": [
+                "Macadamia"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A small green fruit lying in the earth."
+            ]
+        }
+    ]
+}

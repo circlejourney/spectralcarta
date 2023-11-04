@@ -1,0 +1,341 @@
+{
+    "name": "Theatregoer",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.469168, 153.021622],
+    "dialogueLabel": "Theatregoer",
+    
+    "sprites": {
+        "idle": "characters/theatregoer.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Lyceum.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "noLabel": true,
+                    "text": "A loud scream pierces the air and is replaced by sobbing, echoing on invisible theatre walls.",
+                    "override": "met"
+                }
+            ]
+        },
+        {
+            "override": "met",
+            "optionLabel": "What’s going on?",
+            "dialogue": [
+                {
+                    "text": "The ghost stares quietly at you."
+                },
+                {
+                    "text": "What are you doing? Help me!",
+                    "oncomplete": ["met"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["met", "!shot", "!awareOfDeath"],
+            "optionLabel": "What do you need help with?",
+            "dialogue": [
+                {
+                    "text": "Are you stupid?"
+                },
+                {
+                    "text": "I've been shot!",
+                    "oncomplete": ["shot"]
+                }
+            ]
+        },
+        {
+            "required": ["shot", "!cursing", "!awareOfDeath"],
+            "optionLabel": "What man? Are you referring to something that happened when you were alive?",
+            "dialogue": [
+                {
+                    "text": "When I was? I’m still alive, you numbskull, how dare you curse me?",
+                    "clearOverride": true,
+                    "oncomplete": ["cursing"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!insolent", "!awareOfDeath"],
+            "optionLabel": "Calm down, you’re already dead.",
+            "dialogue": [
+                {
+                    "text": "Why you insolent little&mdash;",
+                    "oncomplete": ["insolent"]
+                }
+            ]
+        },
+        {
+            "required": ["insolent", "!bleeding", "!awareOfDeath"],
+            "optionLabel": "Look around you, you'll see I'm right.",
+            "dialogue": [
+                {
+                    "text": "I’m bleeding out and you tell me to look around?",
+                    "oncomplete": ["bleeding"]
+                }
+            ]
+        },
+        {
+            "required": ["!bleeding", "!iDontUnderstand", "!awareOfDeath"],
+            "optionLabel": "Just look around you.",
+            "dialogue": [
+                {
+                    "text": "I’m bleeding out and you tell me to look around?",
+                    "oncomplete": ["bleeding"]
+                }
+            ]
+        },
+        {
+            "required": ["bleeding", "iDontUnderstand", "iCantRemember", "!awareOfDeath"],
+            "optionLabel": "Just look around you.",
+            "dialogue": [
+                {
+                    "text": "She is silent.",
+                    "noLabel": true
+                },
+                {
+                    "text": "As if a veil were being pulled from her eyes, you see her face change.",
+                    "noLabel": true
+                },
+                {
+                    "text": "What happened here?"
+                },
+                {
+                    "text": "What happened to the Lyceum?",
+                    "override": "whatHappened"
+                }
+            ]
+        },
+        {
+            "override": "whatHappened",
+            "optionLabel": "The Lyceum has not been here for decades.",
+            "dialogue": [
+                {
+                    "text": "How can that be?"
+                },
+                {
+                    "text": "What happened to it? How long has it been?",
+                    "clearOverride": true,
+                    "override": "howLong"
+                }
+            ]
+        },
+        {
+            "override": "howLong",
+            "optionLabel": "{YearDifference1944} years. What year did you think it was?",
+            "dialogue": [
+                {
+                    "text": "{YearDifference1944} years? I...no, this cannot be right, this cannot be—"
+                },
+                {
+                    "text": "It was 1944 yesterday, we were all locked away in our houses...",
+                    "oncomplete": ["awareOfDeath"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["bleeding", "!iDontUnderstand"],
+            "optionLabel": "How long have you been bleeding?",
+            "dialogue": [
+                {
+                    "text": "Oh, it feels like hours! I’ve been in pain for so long!"
+                },
+                {
+                    "text": "Yet I feel no weaker?"
+                },
+                {
+                    "text": "I don’t understand...",
+                    "oncomplete": ["iDontUnderstand"]
+                }
+            ]
+        },
+        {
+            "required": ["shot","!awareOfDeath", "!iCantRemember"],
+            "optionLabel": "Do you remember who shot you?",
+            "dialogue": [
+                {
+                    "text": "Yes, a man&mdash;"
+                },
+                {
+                    "text": "Running through the theatre doors, before the show ended, but I can't..."
+                },
+                {
+                    "text": "I can't remember anything else.",
+                    "oncomplete": ["iCantRemember"]
+                }
+            ]
+        },
+        {
+            "required": ["shot", "awareOfDeath", "!dontWantToStay"],
+            "optionLabel": "Do you remember who shot you?",
+            "dialogue": [
+                {
+                    "text": "A man..."
+                },
+                {
+                    "text": "I can’t remember who exactly."
+                },
+                {
+                    "text": "{YearDifference1944} years. How can so much time pass, and I not know it?",
+                    "override": "notKnowIt"
+                }
+            ]
+        },
+        {
+            "override": "notKnowIt",
+            "optionLabel": "Many ghosts struggle with memory.",
+            "dialogue": [
+                {
+                    "text": "A ghost. I'm a ghost."
+                },
+                {
+                    "text": "Am I...trapped here forever?"
+                },
+                {
+                    "text": "I thought there would be a heaven beyond, but was I wrong?",
+                    "clearOverride": true,
+                    "override": "heaven"
+                }
+            ]
+        },
+        {
+            "override": "heaven",
+            "optionLabel": "I don’t know what lies beyond this plane, but I do know that you aren't meant to stay here.",
+            "dialogue": [
+                {
+                    "text": "Tell me how to leave. Please."
+                },
+                {
+                    "text": "I don’t want to stay here any longer, this pain is agonising, let alone {YearDifference1944} years of it.",
+                    "oncomplete": ["dontWantToStay"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["dontWantToStay", "!offeringQuest"],
+            "optionLabel": "Is there something holding you back, some discontent?",
+            "dialogue": [
+                {
+                    "text": "I keep thinking about my death. It’s all I can think about. It floods my thoughts."
+                },
+                {
+                    "text": "I don't know who killed me."
+                },
+                {
+                    "text": "It’s the only thing it could be."
+                },
+                {
+                    "text": "I need to know who killed me.",
+                    "oncomplete": ["offeringQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["offeringQuest", "!acceptedQuest"],
+            "optionLabel": "I will find out.",
+            "dialogue": [
+                {
+                    "text": "Thank you.",
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["Soldier:murder","Cargo Loader:!murder"],
+            "optionLabel": "The murderer was your partner.",
+            "dialogue": [
+                {
+                    "text": "Her eyes seem to glaze over.",
+                    "noLabel": true
+                },
+                {
+                    "text": "What? How can that be&mdash;"
+                },
+                {
+                    "text": "Why did he? Why would he?"
+                },
+                {
+                    "text": "She clutches her face.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I wish you hadn't told me!",
+                    "override": "toldMe"
+                }
+            ]
+        },
+        {
+            "required": ["Cargo Loader:murder", "Soldier:!murder"],
+            "optionLabel": "The murderer was your partner.",
+            "dialogue": [
+                {
+                    "text": "Her eyes seem to glaze over.",
+                    "noLabel": true
+                },
+                {
+                    "text": "What? How can that be&mdash;"
+                },
+                {
+                    "text": "Why did he? Why would he?"
+                },
+                {
+                    "text": "She clutches her face.",
+                    "noLabel": true
+                },
+                {
+                    "text": "You shouldn't have told me.",
+                    "override": "toldMe"
+                }
+            ]
+        },
+        {
+            "override": "toldMe",
+            "optionLabel": "He had come back from the war, and...",
+            "dialogue": [
+                {
+                    "text": "He gave no warning and fired on me. Because he only knew how to talk with his gun."
+                },
+                {
+                    "text": "I remember the moment now, the barrel of the gun, and his sneering face&mdash;"
+                },
+                {
+                    "text": "She winces.",
+                    "noLabel": true
+                },
+                {
+                    "text": "The War made him a monster."
+                },
+                {
+                    "text": "He killed me here, and now..."
+                },
+                {
+                    "text": "Now I will never know solace."
+                },
+                {
+                    "text": "But it may be the only closure I can hope to have."
+                },
+                {
+                    "text": "To know he wasn't the man I thought he was."
+                },
+                {
+                    "text": "It's the only answer I needed...",
+                    "releaseOnComplete": true,
+                    "oncomplete": ["goodbye"],
+                    "clearOverride": true
+                }
+            ]
+        }
+    ]
+}

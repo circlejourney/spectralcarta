@@ -1,0 +1,32 @@
+{
+    "name": "Judith's dress",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/dresspin.png",
+    "coords": [-27.462188, 153.022375],
+    
+    "popups": [
+        {
+            "required": [
+                "Shopper:acceptedQuest"
+            ],
+            "requiredItemState": [
+                "!Judith's dress"
+            ],
+            "dialogue": [
+                "You found the yellow dress that Judith was looking for."
+            ],
+            "journal": "I found the yellow dress that Judith was looking for. It was at Martin's old home.",
+            "pickUpOnComplete": [
+                "Judith's dress"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A bright yellow dress with white polka dots."
+            ]
+        }
+    ]
+}

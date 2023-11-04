@@ -1,0 +1,51 @@
+{
+    "name": "Helen's brooch",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/brooch.png",
+    "coords": [-27.463361, 153.027114],
+    "associated": "Sailor",
+    
+    "popups": [
+        {
+            "required": [
+                "Waitress:sharedName",
+                "Waitress:acceptedQuest"
+            ],
+            "requiredItemState": [
+                "!Helen's brooch"
+            ],
+            "dialogue": [
+                "A brooch styled like a flower with a single inlaid pearl. Helen did say it would be here."
+            ],
+            "journal": "I found Helen's brooch at 75 Astor Terrace.",
+            "pickUpOnComplete": [
+                "Helen's brooch"
+            ],
+            "destroyOnComplete": true
+        },
+        {
+            "required": [
+                "Waitress:!sharedName"
+            ],
+            "requiredItemState": [
+                "!Helen's brooch",
+                "Waitress:acceptedQuest"
+            ],
+            "dialogue": [
+                "A brooch styled like a flower with a single inlaid pearl. The waitress's ghost did say it would be here."
+            ],
+            "journal": "I found the ghost's brooch at 107 Astor Terrace.",
+            "pickUpOnComplete": [
+                "Helen's brooch"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A brooch styled like a flower with a single inlaid pearl."
+            ]
+        }
+    ]
+}

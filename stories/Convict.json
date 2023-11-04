@@ -1,0 +1,316 @@
+{
+    "name": "Convict",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.465740, 153.023189],
+    "dialogueLabel": "Convict",
+    
+    "sprites": {
+        "idle": "characters/convict.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Windmill-Tower.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "text": "The ghost snarls at you&mdash;a strained, suffocated noise. His eyes bulge from their sockets.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I saw you climbing the hill."
+                },
+                {
+                    "text": "What do you want with me?",
+                    "oncomplete": ["met"]
+                }
+            ]
+        },
+        {
+            "required": ["met", "!whatCanYouDo"],
+            "optionLabel": "I’m here to help you.",
+            "dialogue": [
+                    {
+                        "text": "What can you do to help me?"
+                    },
+                    {
+                        "text": "I’ve been dead longer than you’ve been alive."
+                    },
+                    {
+                        "text": "What <i>can</i> you do?",
+                        "oncomplete": ["whatCanYouDo"]
+                    }
+            ]
+        },
+        {
+            "required": ["whatCanYouDo", "!deserve"],
+            "optionLabel": "If you are still here, then you must have unfinished business.",
+            "dialogue": [
+                {
+                    "text": "And what then, after my business is \"finished\"?"
+                },
+                {
+                    "text": "What else is there waiting for me? Oblivion? I don’t care."
+                },
+                {
+                    "text": "I would rather live this sorry existence for eternity, it’s what I deserve.",
+                    "oncomplete": ["deserve"]
+                }
+            ]
+        },
+        {
+            "required": ["whatCanYouDo", "!rude"],
+            "optionLabel": "I am a medium, it is my job to help.",
+            "dialogue": [
+                {
+                    "text": "Rude is what you are, thinking you can end a century of agony.",
+                    "oncomplete": ["rude"]
+                }
+            ]
+        },
+        {
+            "required": ["deserve", "!toldStory"],
+            "optionLabel": "No one deserves to suffer forever.",
+            "dialogue": [
+                {
+                    "text": "Then you do not know me."
+                },
+                {
+                    "text": "It's only a fitting fate for me."
+                },
+                {
+                    "text": "He barks a laugh.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Desperation turns good men to murderers.",
+                    "override": "murderers"
+                }
+            ]
+        },
+        {
+            "override": "murderers",
+            "optionLabel": "Murder? Is that why you were executed here?",
+            "dialogue": [
+                {
+                    "text": "Shush. Don't say it too loud."
+                },
+                {
+                    "text": "Promise you will never let this be known to any breathing soul.",
+                    "clearOverride": true,
+                    "override": "murder"
+                }
+            ]
+        },
+        {
+            "override": "murderers",
+            "optionLabel": "Why did you murder?",
+            "dialogue": [
+                {
+                    "text": "I...I, well, promise it, promise you will never let this be known to any breathing soul.",
+                    "clearOverride": true,
+                    "override": "murder"
+                }
+            ]
+        },
+        {
+            "override": "murder",
+            "optionLabel": "I promise.",
+            "dialogue": [
+                {
+                    "text": "A debt."
+                },
+                {
+                    "text": "I brought about my own ruin, I did."
+                },
+                {
+                    "text": "The dens had me captive. I had nary the power to cease my visits."
+                },
+                {
+                    "text": "Not till I had run dry. And then I borrowed to satiate my need."
+                },
+                {
+                    "text": "I promised payments I knew I could never deliver."
+                },
+                {
+                    "text": "Desperation parted me from my mother's locket, collateral to my dwindling fortunes."
+                },
+                {
+                    "text": "And the debts grew, and grew, and piled, and piled, till the man himself came knocking, armed to execute me."
+                },
+                {
+                    "text": "That's when it happened, when I drove a knife into his back. Just like that my debt was erased."
+                },
+                {
+                    "text": "But I was a fool to think that that was the end to it."
+                },
+                {
+                    "text": "What I paid was much worse."
+                },
+                {
+                    "text": "They clobbered and tied me, they brought me to this tower on the hill."
+                },
+                {
+                    "text": "I thought they would make me work the treadmill, but they took me up to the blades."
+                },
+                {
+                    "text": "I lost my life hanging from one windmill blade. If it wasn't clear from the sorry state I'm in, doomed to wear this noose for all eternity.",
+                    "oncomplete": ["toldStory"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["toldStory", "areYouMad"],
+            "optionLabel": "What can I do to help you?",
+            "dialogue": [
+                {
+                    "text": "Help me? That's the first thing you think of?"
+                },
+                {
+                    "text": "When I've already been dead {YearDifference1882} years?"
+                },
+                {
+                    "text": "Erase my debt, how about it?"
+                },
+                {
+                    "text": "He shakes his head.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Help me. Are you mad?",
+                    "oncomplete": ["areYouMad"]
+                }
+            ]
+        },
+        {
+            "required": ["toldStory", "!notAThing"],
+            "optionLabel": "Do you remember anything else of your life?",
+            "dialogue": [
+                {
+                    "text": "He laughs bitterly.",
+                    "noLabel": true
+                },
+                {
+                    "text": "You ask too much of a ghost who has been dead {YearDifference1882} years."
+                },
+                {
+                    "text": "I do remember...the dens, the smoky miasma, the bodies roiling."
+                },
+                {
+                    "text": "And I remember the Botanic Gardens, at the bend of the river, where I sat and ate fruit with my friends."
+                },
+                {
+                    "text": "But nothing else. I remember nothing else now.",
+                    "oncomplete": ["notAThing"]
+                }
+            ]
+        },
+        {
+            "required": ["toldStory", "!locket"],
+            "optionLabel": "Who was your debt owed to?",
+            "dialogue": [
+                {
+                    "text": "One Emmanuel Davies."
+                },
+                {
+                    "text": "I shudder to hear the name."
+                },
+                {
+                    "text": "I've spent a great part of these decades dwelling on the face he made when I killed him."
+                },
+                {
+                    "text": "Contorted in some form of horror or betrayal."
+                },
+                {
+                    "text": "The world changed, this hill changed, and I had a vantage of it all. But this never did change. My lingering fear of that face."
+                },
+                {
+                    "text": "I often wonder where he put my locket...",
+                    "oncomplete": ["locket"]
+                }
+            ]
+        },
+        {
+            "required": ["locket", "!acceptedQuest"],
+            "optionLabel": "Perhaps I could help you find it.",
+            "dialogue": [
+                {
+                    "text": "Well, good luck, if you want to do the impossible."
+                },
+                {
+                    "text": "I don't weigh your chances highly.",
+                    "oncomplete": ["acceptedQuest"]
+                }
+            ]
+        },
+        {
+            "required": ["acceptedQuest", "!whereIsLocket"],
+            "optionLabel": "Where is the locket?",
+            "dialogue": [
+                {
+                    "text": "Mister Davies lived in Bryntirion, on this very road.",
+                    "journal": "The moneylender Mister Davies lived in Bryntirion, on Wickham Terrace. Perhaps the convict's locket will be there."
+                },
+                {
+                    "text": "For all I know, it's been thrown out."
+                },
+                {
+                    "text": "Just like him to see something so priceless as rubbish.",
+                    "oncomplete": ["whereIsLocket"]
+                }
+            ]
+        },
+        {
+            "required": ["!goodbye"],
+            "requiredItemState": ["Locket"],
+            "optionLabel": "I think I've found your locket.",
+            "dialogue": [
+                {
+                    "text": "By God, you did. I cannot believe it.",
+                    "removeOnComplete": ["Locket"]
+                },
+                {
+                    "text": "Tarnished with age, but I would know it anywhere."
+                },
+                {
+                    "text": "My mother's memorial locket, my only lingering bond with the family I left."
+                },
+                {
+                    "text": "I had missed seeing her face..."
+                },
+                {
+                    "text": "Would she frown and shake her head, to see me in my sorry state?"
+                },
+                {
+                    "text": "It's about time I finally met with her again...",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true
+                }
+            ]
+        },
+        {
+            "required": ["Botanist:acceptedQuest", "notAThing", "!figs", "!goodbye"],
+            "optionLabel": "You say you remember the Botanic Gardens? Do you remember where the fig trees were?",
+            "dialogue": [
+                {
+                    "text": "Ah, the figs?"
+                },
+                {
+                    "text": "Not far northwest of the First Curator's cottage."
+                },
+                {
+                    "text": "The curator once said the figs were from somewhere beyond the sea.",
+                    "oncomplete": ["figs"]
+                }
+            ]
+        }
+    ]
+}

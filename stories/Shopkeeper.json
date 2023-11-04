@@ -1,0 +1,265 @@
+{
+    "name": "Shopkeeper",
+    "type": "character",
+    "time": [0, 24],
+    "coords": [-27.459495, 153.033746],
+    "dialogueLabel": "Shopkeeper",
+    
+    "sprites": {
+        "idle": "characters/shopkeeper.png"
+    },
+    
+    "backgrounds": {
+        "main": "characters/Chinatown.jpg"
+    },
+    
+    "conversations": [
+        {
+            "required": [
+                "!met"
+            ],
+            "optionLabel": "Hello?",
+            "dialogue": [
+                {
+                    "noLabel": true,
+                    "text": "She floats aimlessly about, looking distraught as if she has lost her way. "
+                },
+                {
+                    "noLabel": true,
+                    "text": "When she hears your question, she shrinks away, eyeing you warily."
+                },
+                {
+                    "text": "你是谁？ Who are you?"
+                },
+                {
+                    "text": "你——你得见我?",
+                    "oncomplete": [ "met" ]
+                }
+            ]
+        },
+        {
+            "required": [
+                "met",
+                "!spiritMedium"
+            ],
+            "optionLabel": "What do you need?",
+            "dialogue": [
+                {
+                    "text": "Nothing. I don't need anything."
+                }
+            ]
+        },
+        {
+            "required": [
+                "spiritMedium", "!family"
+            ],
+            "optionLabel": "What do you need?",
+            "dialogue": [
+                {
+                    "text": "My family...where is my family?"
+                },
+                {
+                    "text": "我。。。我只希望他们可以幸福快乐得过日子。",
+                    "oncomplete": [ "family" ]
+                }
+            ]
+        },
+        {
+            "required": [
+                "met",
+                "!spiritMedium"
+            ],
+            "optionLabel": "Yes, I see you.",
+            "dialogue": [
+                {
+                    "text": "你是童乩？",
+                    "oncomplete": ["spiritMedium"]
+                },
+                {
+                    "noLabel": true,
+                    "text": "Her mouth twists as if she were about to cry out, a ghost of a reflex from when she was alive."
+                }
+            ]
+        },
+        {
+            "required": ["met", "!shop"],
+            "optionLabel": "What is your job?",
+            "dialogue": [
+                {
+                    "text": "I have a shop.",
+                    "oncomplete": ["shop"]
+                }
+            ]
+        },
+        {
+            "required": ["shop", "!shopName"],
+            "optionLabel": "What’s the name of your shop?",
+            "dialogue": [
+                {
+                    "noLabel": true,
+                    "text": "She gestures at the shop name."
+                }, 
+                {
+                    "text": "Fan’s Herbs and Remedies.",
+                    "oncomplete": ["shopName"]
+                }
+            ]
+        },
+        {
+            "required": [
+                "family", "!myboy"
+            ], 
+            "optionLabel": "Are you waiting for someone?",
+            "dialogue": [
+                {
+                    "text": "My boy."
+                },
+                {
+                    "text": "我找呀找，还找不到他。"
+                },
+                {
+                    "text": "啊，我很想念他呀，心痛地受不了。",
+                    "oncomplete": ["myboy"]
+                }
+            ]
+        },
+        {
+            "required": [
+                "spiritMedium", "!jade"
+            ],
+            "optionLabel": "What are you holding?",
+            "dialogue": [
+                {
+                    "text": "This one?"
+                },
+                {
+                    "noLabel": true,
+                    "text": "She lifts up the bangle in her hand."
+                },
+                {
+                    "noLabel": true,
+                    "text": "Though the vision is paper thin and the colour is impossible to make out, the faint veins suggest that it is made of jade."
+                },
+                {
+                    "noLabel": true,
+                    "text": "You don’t really believe what they say about jade bringing fortune, but perhaps she did.",
+                    "oncomplete": ["jade"]
+                }
+            ]
+        },
+        {
+            "required": ["myboy", "!whereSon", "!goodbye"],
+            "optionLabel": "Your son? Where is he?",
+            "dialogue": [
+                {
+                    "text": "Don't know.",
+                    "oncomplete": ["whereSon"]
+                }
+            ]
+        },
+        {
+            "required": ["myboy", "!sharedSonName"],
+            "optionLabel": "What is your son's name?",
+            "dialogue": [
+                {
+                    "text": "Name?"
+                },
+                {
+                    "text": "Jonathan Wang...  Jonathan Wang, my son's name.",
+                    "oncomplete": ["sharedSonName"]
+                }
+            ]
+        },
+        {
+            "required": ["Office Worker:fathersName", "!iAmHappy", "!tearup"],
+            "optionLabel": "I have met your grandson.",
+            "dialogue": [
+                {
+                    "text": "我的孙子。。。"
+                },
+                {
+                    "text": "I did not know I had a grandson..."
+                },
+                {
+                    "text": "She seems she would tear up, if she were not a ghost.",
+                    "noLabel": true
+                },
+                {
+                    "text": "Tell him his grandma wants to see him.",
+                    "oncomplete": ["tearup"]
+                }
+            ]
+        },
+        {
+            "override": "tearup",
+            "optionLabel": "Sadly, he has died...he seems very ashamed of himself and told me not to speak to you.",
+            "dialogue": [
+                {
+                    "text": "The ghost is perfectly still and silent.",
+                    "noLabel": true
+                },
+                {
+                    "text": "为什么？"
+                },
+                {
+                    "text": "If I was with him...if I speak to him..."
+                },
+                {
+                    "text": "Maybe he won't be ashamed."
+                },
+                {
+                    "text": "How can he be ashamed? I am proud of him.",
+                    "override": "ashamed",
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "override": "ashamed",
+            "dialogue": [
+                {
+                    "text": "好多年前。。。"
+                },
+                {
+                    "text": "...so many years ago, I came here to work."
+                },
+                {
+                    "text": "With nothing, no friends, no money."
+                },
+                {
+                    "text": "She touches her heart.",
+                    "noLabel": true
+                },
+                {
+                    "text": "I am proud of him. I am proud."
+                },
+                {
+                    "text": "And I am happy.",
+                    "oncomplete": ["iAmHappy"],
+                    "clearOverride": true
+                }
+            ]
+        },
+        {
+            "required": ["iAmHappy", "!goodbye"],
+            "dialogue": [
+                {
+                    "text": "Thank you. You did so much.",
+                    "override": "thankYou"
+                }
+            ]
+        },
+        {
+            "override": "thankYou",
+            "optionLabel": "Of course. I hope you are at peace now.",
+            "dialogue": [
+                {
+                    "text": "Yes, yes...",
+                    "oncomplete": ["goodbye"],
+                    "releaseOnComplete": true,
+                    "clearOverride": true
+                }
+            ]
+        }
+    ]
+}

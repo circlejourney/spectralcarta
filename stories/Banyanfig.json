@@ -1,0 +1,30 @@
+{
+    "name": "Banyan fig",
+    "type": "item",
+    "sprite": "characters/JohnDoe.png",
+    "pin": "assets/fruit2.png",
+    "coords": [-27.4762399, 153.0292829],
+    "associated": "Botanist",
+    
+    "popups": [
+        {
+            "required": [
+                "Botanist:acceptedQuest"
+            ],
+            "dialogue": [
+                "A small red fruit. Perhaps this is a fig?"
+            ],
+            "journal": "I found a small red fruit on the ground in the Botanic Gardens. Perhaps this is a fig?",
+            "pickUpOnComplete": [
+                "Banyan fig"
+            ],
+            "destroyOnComplete": true
+        },
+        
+        {
+            "dialogue": [
+                "A small red fruit lying on the grass."
+            ]
+        }
+    ]
+}
